@@ -1,0 +1,2619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PetPedia - A complete educational resource for pet care, study guides, nutritional info, and tools for Dogs, Cats, Birds, Fish, Rabbits, and Reptiles.">
+    <meta name="keywords" content="pet care, dog training, cat nutrition, bird care, fish tank, rabbit guide, reptile setup, pet calculator, pet name generator">
+    <meta name="author" content="BSCS Student">
+    <title>PetPedia - Your Complete Pet Care Guide & Shop</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .pet-card {
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-pattern {
+            background-color: #667eea;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .bounce-slow {
+            animation: bounce 3s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-paw text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">PetPedia</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Home</a>
+                    <a href="#pets" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Pet Guides</a>
+                    <a href="#care" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Care Tips</a>
+                    <a href="#knowledge" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Knowledge</a>
+                    <a href="#tools" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Tools</a>
+                    <a href="#shop" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Resources</a>
+                    <a href="#blog" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Blog</a>
+                    <a href="#name-generator" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Name Generator</a>
+                    <a href="#compare" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Compare Pets</a>
+                    <a href="#calculator" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Calculator</a>
+                    <a href="#faq" class="nav-link text-gray-700 hover:text-purple-600 font-medium">FAQ</a>
+                    <a href="#quiz" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Quiz</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 font-medium">Contact</a>
+                </div>
+                
+                <!-- Cart & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleCart()" class="relative p-2 text-gray-700 hover:text-purple-600">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#home" class="block py-2 text-gray-700">Home</a>
+                <a href="#pets" class="block py-2 text-gray-700">Pet Guides</a>
+                <a href="#care" class="block py-2 text-gray-700">Care Tips</a>
+                <a href="#knowledge" class="block py-2 text-gray-700">Knowledge</a>
+                <a href="#tools" class="block py-2 text-gray-700">Tools</a>
+                <a href="#shop" class="block py-2 text-gray-700">Resources</a>
+                <a href="#blog" class="block py-2 text-gray-700">Blog</a>
+                <a href="#name-generator" class="block py-2 text-gray-700">Name Generator</a>
+                <a href="#compare" class="block py-2 text-gray-700">Compare Pets</a>
+                <a href="#calculator" class="block py-2 text-gray-700">Calculator</a>
+                <a href="#faq" class="block py-2 text-gray-700">FAQ</a>
+                <a href="#quiz" class="block py-2 text-gray-700">Quiz</a>
+                <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Resource Library</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 max-h-96 overflow-y-auto">
+                <p class="text-gray-500 text-center">No resources saved yet</p>
+            </div>
+            <div class="border-t mt-6 pt-4">
+                <div class="flex justify-between text-lg font-bold">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button onclick="checkout()" class="w-full mt-4 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition">
+                    Get Access
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Learn Everything About Your 
+                        <span class="text-yellow-300">Furry Friends</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-purple-100">
+                        Your complete guide to pet care, training, nutrition, and shopping. 
+                        Discover expert tips and find the best products for your beloved pets!
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#pets" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-yellow-300 transition transform hover:scale-105">
+                            <i class="fas fa-book-open mr-2"></i>Start Learning
+                        </a>
+                        <a href="#shop" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition">
+                            <i class="fas fa-shopping-bag mr-2"></i>Shop Now
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block text-center">
+                    <div class="bounce-slow">
+                        <i class="fas fa-dog text-9xl text-white opacity-90"></i>
+                        <i class="fas fa-cat text-8xl text-yellow-300 ml-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="bg-white py-8 shadow-md relative -mt-10 mx-4 md:mx-auto max-w-4xl rounded-2xl">
+        <div class="px-8">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1 relative">
+                    <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="search-input" onkeyup="searchContent()" placeholder="Search for pets, care tips, products..." 
+                        class="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                </div>
+                <select id="category-filter" onchange="filterCategory()" class="px-6 py-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                    <option value="all">All Categories</option>
+                    <option value="dogs">Dogs</option>
+                    <option value="cats">Cats</option>
+                    <option value="birds">Birds</option>
+                    <option value="fish">Fish</option>
+                    <option value="rabbits">Rabbits</option>
+                    <option value="reptiles">Reptiles</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <i class="fas fa-paw text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">60+</h3>
+                    <p class="text-gray-600">Pet Species Covered</p>
+                </div>
+                <div class="p-6">
+                    <i class="fas fa-book text-4xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">250+</h3>
+                    <p class="text-gray-600">Care Articles</p>
+                </div>
+                <div class="p-6">
+                    <i class="fas fa-file-pdf text-4xl text-pink-600 mb-4"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">50+</h3>
+                    <p class="text-gray-600">Free PDF Guides</p>
+                </div>
+                <div class="p-6">
+                    <i class="fas fa-users text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-3xl font-bold text-gray-800">15K+</h3>
+                    <p class="text-gray-600">Happy Pet Parents</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Guides Section -->
+    <section id="pets" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Study Guides</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Comprehensive information about different pets to help you understand and care for them better
+                </p>
+            </div>
+            
+            <div id="pet-guides" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Dogs -->
+                <div class="card-hover bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('dogs')">
+                    <div class="p-8 text-white">
+                        <i class="fas fa-dog text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Dogs</h3>
+                        <p class="text-amber-100 mb-4">Man's best friend - loyal, loving companions</p>
+                        <ul class="text-sm space-y-1 text-amber-50">
+                            <li><i class="fas fa-check mr-2"></i>300+ Breeds</li>
+                            <li><i class="fas fa-check mr-2"></i>Training Guides</li>
+                            <li><i class="fas fa-check mr-2"></i>Health Tips</li>
+                        </ul>
+                        <button class="mt-4 bg-white text-orange-500 px-4 py-2 rounded-lg font-semibold hover:bg-orange-100 transition">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Cats -->
+                <div class="card-hover bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('cats')">
+                    <div class="p-8 text-white">
+                        <i class="fas fa-cat text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Cats</h3>
+                        <p class="text-purple-100 mb-4">Independent, graceful, and adorable felines</p>
+                        <ul class="text-sm space-y-1 text-purple-50">
+                            <li><i class="fas fa-check mr-2"></i>70+ Breeds</li>
+                            <li><i class="fas fa-check mr-2"></i>Behavior Guide</li>
+                            <li><i class="fas fa-check mr-2"></i>Nutrition Info</li>
+                        </ul>
+                        <button class="mt-4 bg-white text-pink-500 px-4 py-2 rounded-lg font-semibold hover:bg-pink-100 transition">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Birds -->
+                <div class="card-hover bg-gradient-to-br from-green-400 to-teal-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('birds')">
+                    <div class="p-8 text-white">
+                        <i class="fas fa-dove text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Birds</h3>
+                        <p class="text-green-100 mb-4">Beautiful feathered companions</p>
+                        <ul class="text-sm space-y-1 text-green-50">
+                            <li><i class="fas fa-check mr-2"></i>50+ Species</li>
+                            <li><i class="fas fa-check mr-2"></i>Cage Setup</li>
+                            <li><i class="fas fa-check mr-2"></i>Diet Plans</li>
+                        </ul>
+                        <button class="mt-4 bg-white text-teal-500 px-4 py-2 rounded-lg font-semibold hover:bg-teal-100 transition">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Fish -->
+                <div class="card-hover bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('fish')">
+                    <div class="p-8 text-white">
+                        <i class="fas fa-fish text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Fish</h3>
+                        <p class="text-blue-100 mb-4">Peaceful aquatic pets for your home</p>
+                        <ul class="text-sm space-y-1 text-blue-50">
+                            <li><i class="fas fa-check mr-2"></i>100+ Species</li>
+                            <li><i class="fas fa-check mr-2"></i>Tank Setup</li>
+                            <li><i class="fas fa-check mr-2"></i>Water Care</li>
+                        </ul>
+                        <button class="mt-4 bg-white text-indigo-500 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rabbits -->
+                <div class="card-hover bg-gradient-to-br from-rose-400 to-amber-400 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('rabbits')">
+                    <div class="p-8 text-white">
+                        <i class="fas fa-carrot text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Rabbits</h3>
+                        <p class="text-rose-100 mb-4">Gentle, social companions with big personalities</p>
+                        <ul class="text-sm space-y-1 text-rose-50">
+                            <li><i class="fas fa-check mr-2"></i>Indoor-friendly</li>
+                            <li><i class="fas fa-check mr-2"></i>Hay-based diets</li>
+                            <li><i class="fas fa-check mr-2"></i>Litter training</li>
+                        </ul>
+                        <button class="mt-4 bg-white text-rose-500 px-4 py-2 rounded-lg font-semibold hover:bg-rose-100 transition">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reptiles -->
+                <div class="card-hover bg-gradient-to-br from-lime-500 to-emerald-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('reptiles')">
+                    <div class="p-8 text-white">
+                        <i class="fas fa-dragon text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Reptiles</h3>
+                        <p class="text-lime-100 mb-4">Calm, fascinating pets with unique habitats</p>
+                        <ul class="text-sm space-y-1 text-lime-50">
+                            <li><i class="fas fa-check mr-2"></i>Heat & UV setup</li>
+                            <li><i class="fas fa-check mr-2"></i>Species-specific diets</li>
+                            <li><i class="fas fa-check mr-2"></i>Low noise care</li>
+                        </ul>
+                        <button class="mt-4 bg-white text-emerald-600 px-4 py-2 rounded-lg font-semibold hover:bg-emerald-100 transition">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Details Modal -->
+    <div id="pet-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div id="modal-content" class="p-8">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Post Modal -->
+    <div id="blog-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div id="blog-modal-content" class="p-8">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Care Tips Section -->
+    <section id="care" class="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Care Tips</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Essential tips to keep your pets healthy, happy, and thriving
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-2xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Health & Wellness</h3>
+                    <p class="text-gray-600 mb-4">Regular vet check-ups, vaccinations, and preventive care are essential for your pet's long-term health.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Annual health exams</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Vaccination schedules</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Dental care routine</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-utensils text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Nutrition Guide</h3>
+                    <p class="text-gray-600 mb-4">Proper nutrition is the foundation of your pet's health. Learn what to feed and what to avoid.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Balanced diet plans</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Portion control</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Safe treats list</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-dumbbell text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Exercise & Play</h3>
+                    <p class="text-gray-600 mb-4">Keep your pets active and mentally stimulated with appropriate exercise and playtime.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Daily exercise needs</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Interactive toys</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Mental stimulation</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-brush text-2xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Grooming & Hygiene</h3>
+                    <p class="text-gray-600 mb-4">Regular grooming keeps coats healthy and helps you spot health issues early.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Brushing routines</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Nail trims & ear checks</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Bathing guidance</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-halved text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Safe Home Setup</h3>
+                    <p class="text-gray-600 mb-4">Create a safe environment so your pet can explore without risks.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Pet-proof rooms</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Safe toys & gear</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Emergency planning</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl text-pink-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Training & Enrichment</h3>
+                    <p class="text-gray-600 mb-4">Build confidence and reduce boredom with short, consistent training and enrichment.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Positive reinforcement</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Puzzle toys & foraging</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Weekly skill goals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Hub Section -->
+    <section id="knowledge" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Knowledge Hub</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Quick facts, training checklists, and study tools to make your learning easier.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Quick Care Checklist</h3>
+                        <span class="text-purple-600 text-2xl"><i class="fas fa-clipboard-list"></i></span>
+                    </div>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Daily fresh water</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Balanced meals</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Clean living space</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Exercise/play time</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Weekly grooming</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Training Steps</h3>
+                        <span class="text-indigo-600 text-2xl"><i class="fas fa-route"></i></span>
+                    </div>
+                    <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                        <li>Set a routine schedule</li>
+                        <li>Use positive rewards</li>
+                        <li>Keep sessions short</li>
+                        <li>Introduce simple commands</li>
+                        <li>Track progress weekly</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Pet Facts</h3>
+                        <span class="text-pink-600 text-2xl"><i class="fas fa-lightbulb"></i></span>
+                    </div>
+                    <div class="space-y-3 text-gray-600">
+                        <p><strong>Dogs:</strong> Can learn 100+ words & signals.</p>
+                        <p><strong>Cats:</strong> Sleep 12-16 hours daily.</p>
+                        <p><strong>Birds:</strong> Some parrots live 40+ years.</p>
+                        <p><strong>Fish:</strong> Goldfish can recognize faces.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Nutrition Table</h3>
+                        <span class="text-green-600 text-2xl"><i class="fas fa-table"></i></span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-600">
+                            <thead class="text-gray-700">
+                                <tr>
+                                    <th class="py-2">Pet</th>
+                                    <th class="py-2">Main Food</th>
+                                    <th class="py-2">Treats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-t">
+                                    <td class="py-2">Dog</td>
+                                    <td class="py-2">Protein + Veg</td>
+                                    <td class="py-2">Biscuits</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="py-2">Cat</td>
+                                    <td class="py-2">Meat-based</td>
+                                    <td class="py-2">Fish bites</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="py-2">Bird</td>
+                                    <td class="py-2">Seeds + Fruits</td>
+                                    <td class="py-2">Millet</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="py-2">Fish</td>
+                                    <td class="py-2">Pellets</td>
+                                    <td class="py-2">Worms</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Weekly Planner</h3>
+                        <span class="text-blue-600 text-2xl"><i class="fas fa-calendar-check"></i></span>
+                    </div>
+                    <div class="space-y-3 text-gray-600">
+                        <p><strong>Mon:</strong> Grooming + walk</p>
+                        <p><strong>Wed:</strong> Training session</p>
+                        <p><strong>Fri:</strong> Health check</p>
+                        <p><strong>Weekend:</strong> Play + bonding</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Habitat Setup</h3>
+                        <span class="text-yellow-600 text-2xl"><i class="fas fa-home"></i></span>
+                    </div>
+                    <div class="text-gray-600 space-y-3">
+                        <p><strong>Dogs/Cats:</strong> Quiet corner + bedding</p>
+                        <p><strong>Birds:</strong> Large cage + perches</p>
+                        <p><strong>Fish:</strong> Filtered tank + plants</p>
+                        <p><strong>Tip:</strong> Keep space calm and safe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Tools Section -->
+    <section id="tools" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Study Tools & Learning Aids</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Interactive learning tools designed to help you study smarter, not harder. Build pet profiles, track habits, and create personalized study plans.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-calendar-alt text-2xl text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Daily Study Planner</h3>
+                            <p class="text-gray-500 text-sm">Auto-generate a care study plan</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2">Select pet type</label>
+                            <select id="planner-pet" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none">
+                                <option value="Dog">Dog</option>
+                                <option value="Cat">Cat</option>
+                                <option value="Bird">Bird</option>
+                                <option value="Fish">Fish</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2">Study focus</label>
+                            <select id="planner-focus" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none">
+                                <option value="Care & Routine">Care & Routine</option>
+                                <option value="Nutrition">Nutrition</option>
+                                <option value="Training & Behavior">Training & Behavior</option>
+                                <option value="Health & Safety">Health & Safety</option>
+                            </select>
+                        </div>
+                        <button onclick="generatePlan()" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                            Generate Plan
+                        </button>
+                        <div id="planner-output" class="bg-purple-50 border border-purple-100 rounded-xl p-4 text-sm text-gray-600">Your study plan will appear here.</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-clipboard-check text-2xl text-indigo-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Care Habit Tracker</h3>
+                            <p class="text-gray-500 text-sm">Mark tasks to build consistency</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3" id="habit-list">
+                        <label class="flex items-center gap-3 text-gray-600">
+                            <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()">
+                            Feed with balanced nutrition
+                        </label>
+                        <label class="flex items-center gap-3 text-gray-600">
+                            <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()">
+                            Fresh water refill
+                        </label>
+                        <label class="flex items-center gap-3 text-gray-600">
+                            <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()">
+                            Grooming or hygiene check
+                        </label>
+                        <label class="flex items-center gap-3 text-gray-600">
+                            <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()">
+                            Enrichment or play session
+                        </label>
+                        <label class="flex items-center gap-3 text-gray-600">
+                            <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()">
+                            Health observation notes
+                        </label>
+                    </div>
+                    <div class="mt-4 bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm text-gray-600">
+                        <span class="font-semibold">Progress:</span> <span id="habit-progress">0</span>/5 tasks completed
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-pink-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-book-open text-2xl text-pink-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">Pet Knowledge Flashcards</h3>
+                            <p class="text-gray-500 text-sm">Tap to reveal quick tips</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div id="flashcard" class="bg-gray-50 border-2 border-dashed border-pink-200 rounded-2xl p-6 text-gray-700 min-h-[160px] flex items-center justify-center text-center">
+                            Tap “Next Tip” to reveal flashcards.
+                        </div>
+                        <button onclick="nextFlashcard()" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700 transition">
+                            Next Tip
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Skill Builder Map</h3>
+                    <p class="text-gray-600 mb-6">Follow a structured learning path. Each step unlocks the next topic to keep you motivated.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">1</span>
+                            <p class="text-gray-700">Basics: Pet safety, routine, and environment setup</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center font-bold">2</span>
+                            <p class="text-gray-700">Nutrition: Balanced diet and safe foods checklist</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">3</span>
+                            <p class="text-gray-700">Behavior: Socialization and positive training routines</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-10 h-10 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold">4</span>
+                            <p class="text-gray-700">Health: Preventive care and common symptoms</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Pet Profile Builder</h3>
+                    <p class="text-gray-600 mb-6">Create a quick profile to personalize the resources that appear on your dashboard.</p>
+                    <form onsubmit="saveProfile(event)" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input id="profile-name" type="text" placeholder="Pet name" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none" required>
+                            <select id="profile-type" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none">
+                                <option>Dog</option>
+                                <option>Cat</option>
+                                <option>Bird</option>
+                                <option>Fish</option>
+                            </select>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input id="profile-age" type="number" min="0" placeholder="Age" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none" required>
+                            <input id="profile-goal" type="text" placeholder="Care goal (e.g. potty training)" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none" required>
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+                            Save Profile
+                        </button>
+                    </form>
+                    <div id="profile-output" class="mt-4 bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm text-gray-600">Your profile summary will appear here.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resource Library Section -->
+    <section id="shop" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Resource Library</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    100% digital study materials you can download instantly. No physical products — only free PDF guides, study plans, glossaries, and worksheets to help you learn pet care better.
+                </p>
+            </div>
+            
+            <!-- Resource Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterProducts('all')" class="shop-filter active px-6 py-3 rounded-full bg-purple-600 text-white font-medium hover:bg-purple-700 transition">All Resources</button>
+                <button onclick="filterProducts('guides')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-purple-600 hover:text-white transition">Guides</button>
+                <button onclick="filterProducts('books')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-purple-600 hover:text-white transition">Books</button>
+                <button onclick="filterProducts('plans')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-purple-600 hover:text-white transition">Study Plans</button>
+                <button onclick="filterProducts('dictionaries')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-purple-600 hover:text-white transition">Dictionaries</button>
+                <button onclick="filterProducts('worksheets')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium hover:bg-purple-600 hover:text-white transition">Worksheets</button>
+            </div>
+
+            <div class="bg-purple-50 border border-purple-100 rounded-2xl p-6 mb-10">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-purple-700">Featured Resource Pack</h3>
+                        <p class="text-gray-600">Download a complete pet learning bundle with guides, planners, glossaries, and printable worksheets.</p>
+                    </div>
+                    <button onclick="showToast('Resource pack saved to your library!')" class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition">
+                        <i class="fas fa-download mr-2"></i>Get Bundle
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Resource Grid -->
+            <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Resources will be loaded here -->
+            </div>
+
+            <div class="mt-12 bg-white border border-gray-200 rounded-2xl p-6">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Create Your Custom Resource List</h3>
+                        <p class="text-gray-600">Choose a pet type and see recommended study materials instantly.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                        <select id="resource-pet" class="border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none">
+                            <option value="Dog">Dog</option>
+                            <option value="Cat">Cat</option>
+                            <option value="Bird">Bird</option>
+                            <option value="Fish">Fish</option>
+                        </select>
+                        <button onclick="generateResourceList()" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                            Recommend Resources
+                        </button>
+                    </div>
+                </div>
+                <div id="resource-output" class="mt-4 bg-purple-50 border border-purple-100 rounded-xl p-4 text-sm text-gray-600">
+                    Recommendations will appear here.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Care Blog Section -->
+    <section id="blog" class="py-20 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Care Blog</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Latest articles, tips, and stories from pet experts and community members.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full">Training</span>
+                            <span class="text-gray-500 text-sm">Mar 15, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">How to Train Your Puppy in 30 Days</h3>
+                        <p class="text-gray-600 mb-4">A step-by-step guide to house training, basic commands, and socialization for new puppies.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">Dr. Sarah Johnson</span>
+                            </div>
+                            <button type="button" onclick="showBlogPost('puppy-training')" class="text-blue-600 hover:text-blue-800 font-medium text-sm cursor-pointer">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-green-100 text-green-600 text-xs font-semibold px-3 py-1 rounded-full">Nutrition</span>
+                            <span class="text-gray-500 text-sm">Mar 10, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Homemade Cat Food Recipes</h3>
+                        <p class="text-gray-600 mb-4">Healthy, vet-approved recipes you can make at home for your feline friends.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-green-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">Chef Maria Chen</span>
+                            </div>
+                            <button type="button" onclick="showBlogPost('cat-food')" class="text-blue-600 hover:text-blue-800 font-medium text-sm cursor-pointer">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-semibold px-3 py-1 rounded-full">Health</span>
+                            <span class="text-gray-500 text-sm">Mar 5, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Signs Your Bird Needs a Vet Visit</h3>
+                        <p class="text-gray-600 mb-4">Learn to recognize subtle changes in behavior that indicate health issues in birds.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-purple-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">Dr. Alex Rodriguez</span>
+                            </div>
+                            <button type="button" onclick="showBlogPost('bird-health')" class="text-blue-600 hover:text-blue-800 font-medium text-sm cursor-pointer">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-600 text-xs font-semibold px-3 py-1 rounded-full">Behavior</span>
+                            <span class="text-gray-500 text-sm">Feb 28, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Understanding Rabbit Body Language</h3>
+                        <p class="text-gray-600 mb-4">What your rabbit's ears, posture, and movements are telling you about their mood.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-yellow-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">Behaviorist Lisa Park</span>
+                            </div>
+                            <button type="button" onclick="showBlogPost('rabbit-behavior')" class="text-blue-600 hover:text-blue-800 font-medium text-sm cursor-pointer">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-red-100 text-red-600 text-xs font-semibold px-3 py-1 rounded-full">Safety</span>
+                            <span class="text-gray-500 text-sm">Mar 1, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Safe Human Foods for Pets</h3>
+                        <p class="text-gray-600 mb-4">A complete guide to which human foods are safe and which to avoid for your furry friends.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-red-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">Emma Davis</span>
+                            </div>
+                            <button type="button" onclick="showBlogPost('pet-proofing')" class="text-blue-600 hover:text-blue-800 font-medium text-sm cursor-pointer">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-semibold px-3 py-1 rounded-full">Adoption</span>
+                            <span class="text-gray-500 text-sm">Feb 18, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Preparing for Your First Reptile Pet</h3>
+                        <p class="text-gray-600 mb-4">Essential setup, heating, and feeding requirements for beginner reptile owners.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-indigo-600 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">Reptile Specialist David Lee</span>
+                            </div>
+                            <button type="button" onclick="showBlogPost('reptile-setup')" class="text-blue-600 hover:text-blue-800 font-medium text-sm cursor-pointer">Read More →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="javascript:void(0)" onclick="showAllBlogPosts()" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition">
+                    <i class="fas fa-book-open"></i> View All Blog Posts
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Comparison Tool Section -->
+    <section id="compare" class="py-20 bg-gradient-to-br from-cyan-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Comparison Tool</h2>
+                <p class="text-xl text-gray-600">Compare different pets side-by-side to find your perfect match!</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-2">Pet 1</label>
+                        <select id="compare-pet1" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
+                            <option value="">Select Pet</option>
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="bird">Bird</option>
+                            <option value="fish">Fish</option>
+                            <option value="rabbit">Rabbit</option>
+                            <option value="reptile">Reptile</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-2">Pet 2</label>
+                        <select id="compare-pet2" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
+                            <option value="">Select Pet</option>
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="bird">Bird</option>
+                            <option value="fish">Fish</option>
+                            <option value="rabbit">Rabbit</option>
+                            <option value="reptile">Reptile</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="comparePets()" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                            <i class="fas fa-balance-scale mr-2"></i> Compare
+                        </button>
+                    </div>
+                </div>
+
+                <div id="comparison-results" class="hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-blue-50">
+                                <tr>
+                                    <th class="p-4 font-bold text-gray-700">Characteristic</th>
+                                    <th id="pet1-header" class="p-4 font-bold text-gray-700">Pet 1</th>
+                                    <th id="pet2-header" class="p-4 font-bold text-gray-700">Pet 2</th>
+                                </tr>
+                            </thead>
+                            <tbody id="comparison-table" class="divide-y">
+                                <!-- Filled dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Care Calculator Section -->
+    <section id="calculator" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Care Calculator</h2>
+                <p class="text-xl text-gray-600">Estimate your monthly pet care costs and time commitment!</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Pet Information</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-2">Pet Type</label>
+                                <select id="calc-pet-type" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-green-500 focus:outline-none">
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="fish">Fish</option>
+                                    <option value="rabbit">Rabbit</option>
+                                    <option value="reptile">Reptile</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-2">Size</label>
+                                <select id="calc-size" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-green-500 focus:outline-none">
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </div>
+                            <button onclick="calculateCare()" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                                <i class="fas fa-calculator mr-2"></i> Calculate
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Estimated Results</h3>
+                        <div id="calc-results" class="space-y-4">
+                            <div class="bg-white rounded-lg p-4 shadow">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-gray-600">Monthly Food Cost</span>
+                                    <span id="food-cost" class="text-2xl font-bold text-green-600">-</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="food-bar" class="bg-green-500 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-gray-600">Daily Care Time</span>
+                                    <span id="care-time" class="text-2xl font-bold text-blue-600">-</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="time-bar" class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-gray-600">Exercise Needs</span>
+                                    <span id="exercise-level" class="text-2xl font-bold text-purple-600">-</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="exercise-bar" class="bg-purple-500 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Warning Signs Section (Replacing Testimonials) -->
+    <section id="health-warnings" class="py-20 bg-gradient-to-br from-red-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">When to See a Vet</h2>
+                <p class="text-xl text-gray-600">Critical health warning signs for different pets.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-dog mr-2 text-amber-500"></i> Dogs
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Excessive panting/lethargy</li>
+                        <li>• Changes in appetite/water intake</li>
+                        <li>• Difficulty standing or walking</li>
+                        <li>• Red or cloudy eyes</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-cat mr-2 text-purple-500"></i> Cats
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Hiding more than usual</li>
+                        <li>• Sudden aggression</li>
+                        <li>• Rapid weight loss/gain</li>
+                        <li>• Trouble using the litter box</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-dove mr-2 text-green-500"></i> Birds
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Fluffed up feathers for hours</li>
+                        <li>• Change in dropping color</li>
+                        <li>• Sitting on bottom of cage</li>
+                        <li>• Tail bobbing while breathing</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-fish mr-2 text-blue-500"></i> Fish
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• Gasping at surface</li>
+                        <li>• Clamped fins against body</li>
+                        <li>• White spots or fuzzy patches</li>
+                        <li>• Erratic swimming patterns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Name Generator Section -->
+    <section id="name-generator" class="py-20 bg-gradient-to-br from-pink-50 to-rose-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Name Generator</h2>
+                <p class="text-xl text-gray-600">Generate creative and unique names for your new pet!</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Generate Names</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-2">Pet Type</label>
+                                <select id="pet-type" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-pink-500 focus:outline-none">
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="rabbit">Rabbit</option>
+                                    <option value="reptile">Reptile</option>
+                                    <option value="fish">Fish</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-2">Name Style</label>
+                                <select id="name-style" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-pink-500 focus:outline-none">
+                                    <option value="cute">Cute & Playful</option>
+                                    <option value="strong">Strong & Powerful</option>
+                                    <option value="unique">Unique & Creative</option>
+                                    <option value="funny">Funny & Quirky</option>
+                                    <option value="classic">Classic & Traditional</option>
+                                </select>
+                            </div>
+                            <button onclick="generatePetNames()" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700 transition">
+                                <i class="fas fa-magic mr-2"></i> Generate Names
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Generated Names</h3>
+                        <div id="name-results" class="bg-pink-50 border-2 border-pink-100 rounded-xl p-4 min-h-[200px]">
+                            <p class="text-gray-500 text-center">Click "Generate Names" to see suggestions</p>
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <button onclick="saveFavoriteName()" class="flex-1 bg-pink-100 text-pink-600 py-2 rounded-lg hover:bg-pink-200 transition">
+                                <i class="fas fa-heart mr-2"></i> Save Favorite
+                            </button>
+                            <button onclick="copyAllNames()" class="flex-1 bg-pink-100 text-pink-600 py-2 rounded-lg hover:bg-pink-200 transition">
+                                <i class="fas fa-copy mr-2"></i> Copy All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Your Favorite Names</h4>
+                    <div id="favorite-names" class="flex flex-wrap gap-2">
+                        <p class="text-gray-500">No favorites saved yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">Answers to common questions about pet care and learning resources.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Are these resources free?</h3>
+                    <p class="text-gray-600">Yes! All resources in the library are free PDFs, worksheets, and study plans that you can save and use anytime.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Can I use this for academic projects?</h3>
+                    <p class="text-gray-600">Absolutely. You can cite these summaries and use the planners as part of your BSCS project or presentation.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">How do I keep track of learning?</h3>
+                    <p class="text-gray-600">Use the Study Tools section to generate plans, build profiles, and track daily habits.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Can I suggest new topics?</h3>
+                    <p class="text-gray-600">Yes! Use the contact form to request new guides or feature ideas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="py-20 bg-gradient-to-r from-purple-600 to-indigo-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-4">Find Your Perfect Pet!</h2>
+            <p class="text-xl text-purple-100 mb-8">
+                Take our fun quiz to discover which pet matches your lifestyle
+            </p>
+            
+            <div id="quiz-container" class="bg-white rounded-2xl p-8 shadow-2xl">
+                <div id="quiz-content">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Question <span id="question-num">1</span> of 5</h3>
+                    <p id="quiz-question" class="text-xl text-gray-700 mb-8"></p>
+                    <div id="quiz-options" class="grid md:grid-cols-2 gap-4">
+                        <!-- Options loaded dynamically -->
+                    </div>
+                </div>
+                <div id="quiz-result" class="hidden text-center">
+                    <i id="result-icon" class="text-8xl mb-6"></i>
+                    <h3 id="result-title" class="text-3xl font-bold text-gray-800 mb-4"></h3>
+                    <p id="result-text" class="text-xl text-gray-600 mb-6"></p>
+                    <button onclick="restartQuiz()" class="bg-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
+                        Take Quiz Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Subscribe to Our Newsletter</h2>
+            <p class="text-gray-400 mb-8">Get weekly pet care tips, exclusive offers, and new product updates!</p>
+            <form onsubmit="subscribe(event)" class="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
+                <input type="email" id="email-input" placeholder="Enter your email" required
+                    class="flex-1 px-6 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button type="submit" class="bg-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-purple-700 transition">
+                    Subscribe <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <p class="text-xl text-gray-600">Have questions? We'd love to hear from you!</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <form onsubmit="submitContact(event)" class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none">
+                                <option>General Inquiry</option>
+                                <option>Pet Care Question</option>
+                                <option>Order Support</option>
+                                <option>Partnership</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea rows="5" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-purple-600 text-white py-4 rounded-lg font-semibold hover:bg-purple-700 transition">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Address</h4>
+                            <p class="text-gray-600">123 Pet Street, Animal City, AC 12345</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Phone</h4>
+                            <p class="text-gray-600">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Email</h4>
+                            <p class="text-gray-600">hello@petpedia.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-clock text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Hours</h4>
+                            <p class="text-gray-600">Mon - Fri: 9AM - 6PM<br>Sat - Sun: 10AM - 4PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6">
+                        <h4 class="font-bold text-gray-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center hover:bg-purple-700 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-pink-500 text-white rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-400 text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-paw text-3xl text-purple-400"></i>
+                        <span class="text-2xl font-bold">PetPedia</span>
+                    </div>
+                    <p class="text-gray-400">Your trusted companion in pet care education and shopping.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-purple-400">Home</a></li>
+                        <li><a href="#pets" class="hover:text-purple-400">Pet Guides</a></li>
+                        <li><a href="#shop" class="hover:text-purple-400">Shop</a></li>
+                        <li><a href="#contact" class="hover:text-purple-400">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Pet Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-purple-400">Dogs</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Cats</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Birds</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Fish</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-purple-400">FAQ</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Returns</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 PetPedia. Made with <i class="fas fa-heart text-red-500"></i> for pet lovers everywhere.By Areeba Mustafa</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
+        // Product Data
+        const products = [
+            { id: 1, name: "Dog Care Starter Guide (PDF)", price: 0.00, category: "guides", image: "📘", rating: 4.9, description: "Basics of training, feeding, and safety" },
+            { id: 2, name: "Cat Behavior Handbook (PDF)", price: 0.00, category: "books", image: "📗", rating: 4.7, description: "Understand moods, habits, and care" },
+            { id: 3, name: "Bird Care Study Notes", price: 0.00, category: "guides", image: "📙", rating: 4.6, description: "Cage setup, diet, and daily routines" },
+            { id: 4, name: "Fish Aquarium Planner", price: 0.00, category: "plans", image: "📒", rating: 4.5, description: "Tank cycling checklist and schedule" },
+            { id: 5, name: "Pet Nutrition Chart", price: 0.00, category: "guides", image: "📋", rating: 4.8, description: "Food portions and healthy treat list" },
+            { id: 6, name: "Cat Health Glossary", price: 0.00, category: "dictionaries", image: "📕", rating: 4.4, description: "Easy terms for common cat health" },
+            { id: 7, name: "Dog Training Routine (PDF)", price: 0.00, category: "plans", image: "📝", rating: 4.7, description: "Weekly plan for obedience training" },
+            { id: 8, name: "Pet First Aid Notes", price: 0.00, category: "books", image: "📚", rating: 4.8, description: "Emergency response for common issues" },
+            { id: 9, name: "Bird Vocabulary Dictionary", price: 0.00, category: "dictionaries", image: "📓", rating: 4.3, description: "Simple terms for bird care" },
+            { id: 10, name: "Cat Care Study Plan", price: 0.00, category: "plans", image: "🗓️", rating: 4.6, description: "Daily and weekly care schedule" },
+            { id: 11, name: "Pet Habitats Guide", price: 0.00, category: "guides", image: "🏡", rating: 4.7, description: "Home setup for dogs, cats, birds, fish" },
+            { id: 12, name: "Pet Care Dictionary", price: 0.00, category: "dictionaries", image: "📖", rating: 4.5, description: "Quick definitions of pet care terms" },
+            { id: 13, name: "Pet Study Workbook", price: 0.00, category: "worksheets", image: "🧾", rating: 4.8, description: "Printable worksheets to track learning" },
+            { id: 14, name: "Vet Visit Preparation Sheet", price: 0.00, category: "worksheets", image: "🩺", rating: 4.6, description: "Checklist for health appointments" },
+            { id: 15, name: "Dog Breed Comparison Chart", price: 0.00, category: "guides", image: "📊", rating: 4.7, description: "Compare energy, size, and care needs" },
+            { id: 16, name: "Cat Body Language Cards", price: 0.00, category: "worksheets", image: "🃏", rating: 4.5, description: "Visual cards for cat mood learning" },
+            { id: 17, name: "Pet Safety Home Audit", price: 0.00, category: "worksheets", image: "🛡️", rating: 4.7, description: "Room-by-room safety checklist" },
+            { id: 18, name: "Bird Care Glossary", price: 0.00, category: "dictionaries", image: "📘", rating: 4.4, description: "Key vocabulary for bird owners" },
+            { id: 19, name: "Fish Tank Maintenance Guide", price: 0.00, category: "books", image: "📘", rating: 4.6, description: "Step-by-step maintenance routines" },
+            { id: 20, name: "Pet Study Roadmap", price: 0.00, category: "plans", image: "🧭", rating: 4.8, description: "Week-by-week learning path" }
+        ];
+
+        // Cart
+        let cart = [];
+
+        // Pet Details Data
+        const petDetails = {
+            dogs: {
+                title: "Dogs - Complete Guide",
+                icon: "fas fa-dog",
+                color: "from-amber-400 to-orange-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Dogs</h4>
+                    <p class="text-gray-600 mb-4">Dogs have been human companions for over 15,000 years. They are known for their loyalty, intelligence, and ability to form strong bonds with their owners.</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Breeds</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Labrador Retriever</strong>
+                            <p class="text-sm text-gray-600">Friendly, active, outgoing</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>German Shepherd</strong>
+                            <p class="text-sm text-gray-600">Loyal, confident, courageous</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Golden Retriever</strong>
+                            <p class="text-sm text-gray-600">Intelligent, friendly, devoted</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Bulldog</strong>
+                            <p class="text-sm text-gray-600">Calm, courageous, friendly</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Poodle</strong>
+                            <p class="text-sm text-gray-600">Intelligent, active, hypoallergenic</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Beagle</strong>
+                            <p class="text-sm text-gray-600">Curious, friendly, great with kids</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Rottweiler</strong>
+                            <p class="text-sm text-gray-600">Loyal, confident, protective</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Yorkshire Terrier</strong>
+                            <p class="text-sm text-gray-600">Affectionate, brave, small size</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Daily exercise: 30 min - 2 hours depending on breed</li>
+                        <li>✓ Regular grooming based on coat type</li>
+                        <li>✓ Balanced diet with quality protein</li>
+                        <li>✓ Annual vet check-ups and vaccinations</li>
+                        <li>✓ Mental stimulation and training</li>
+                    </ul>
+                `
+            },
+            cats: {
+                title: "Cats - Complete Guide",
+                icon: "fas fa-cat",
+                color: "from-purple-400 to-pink-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Cats</h4>
+                    <p class="text-gray-600 mb-4">Cats have been domesticated for around 10,000 years. They are independent yet affectionate pets known for their graceful movements and unique personalities.</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Breeds</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Persian</strong>
+                            <p class="text-sm text-gray-600">Gentle, quiet, sweet</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Maine Coon</strong>
+                            <p class="text-sm text-gray-600">Gentle giant, playful</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Siamese</strong>
+                            <p class="text-sm text-gray-600">Vocal, social, intelligent</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>British Shorthair</strong>
+                            <p class="text-sm text-gray-600">Easy-going, loyal, calm</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Bengal</strong>
+                            <p class="text-sm text-gray-600">Active, athletic, wild look</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Ragdoll</strong>
+                            <p class="text-sm text-gray-600">Relaxed, affectionate, gentle</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Sphynx</strong>
+                            <p class="text-sm text-gray-600">Hairless, energetic, affectionate</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Scottish Fold</strong>
+                            <p class="text-sm text-gray-600">Sweet, calm, folded ears</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Clean litter box maintained daily</li>
+                        <li>✓ Regular brushing based on coat length</li>
+                        <li>✓ Fresh water and quality cat food</li>
+                        <li>✓ Scratching posts and climbing spaces</li>
+                        <li>✓ Interactive play sessions daily</li>
+                    </ul>
+                `
+            },
+            birds: {
+                title: "Birds - Complete Guide",
+                icon: "fas fa-dove",
+                color: "from-green-400 to-teal-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Pet Birds</h4>
+                    <p class="text-gray-600 mb-4">Birds make wonderful pets with their beautiful colors, songs, and personalities. Many species can learn to talk and perform tricks!</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Species</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Budgerigar (Budgie)</strong>
+                            <p class="text-sm text-gray-600">Small, colorful, can talk</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Cockatiel</strong>
+                            <p class="text-sm text-gray-600">Friendly, whistles melodies</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Lovebird</strong>
+                            <p class="text-sm text-gray-600">Affectionate, colorful</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>African Grey</strong>
+                            <p class="text-sm text-gray-600">Highly intelligent talker</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Canary</strong>
+                            <p class="text-sm text-gray-600">Beautiful singer, low maintenance</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Parakeet</strong>
+                            <p class="text-sm text-gray-600">Social, active, easy to train</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Macaw</strong>
+                            <p class="text-sm text-gray-600">Large, colorful, long lifespan</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Finch</strong>
+                            <p class="text-sm text-gray-600">Small, active, best in pairs</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Spacious cage with perches</li>
+                        <li>✓ Fresh seeds, pellets, fruits & veggies</li>
+                        <li>✓ Clean water changed daily</li>
+                        <li>✓ Regular out-of-cage time</li>
+                        <li>✓ Mental stimulation with toys</li>
+                    </ul>
+                `
+            },
+            fish: {
+                title: "Fish - Complete Guide",
+                icon: "fas fa-fish",
+                color: "from-blue-400 to-indigo-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Pet Fish</h4>
+                    <p class="text-gray-600 mb-4">Fish are peaceful, beautiful pets that can reduce stress. From colorful bettas to graceful goldfish, there's a fish for every aquarist!</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Species</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Betta Fish</strong>
+                            <p class="text-sm text-gray-600">Colorful, solitary, easy care</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Goldfish</strong>
+                            <p class="text-sm text-gray-600">Classic, hardy, social</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Guppy</strong>
+                            <p class="text-sm text-gray-600">Colorful, active, breeds easily</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Neon Tetra</strong>
+                            <p class="text-sm text-gray-600">Schooling fish, vibrant colors</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Angelfish</strong>
+                            <p class="text-sm text-gray-600">Graceful, triangular shape</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Molly</strong>
+                            <p class="text-sm text-gray-600">Peaceful, adaptable, livebearer</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Platy</strong>
+                            <p class="text-sm text-gray-600">Colorful, peaceful, easy care</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Discus</strong>
+                            <p class="text-sm text-gray-600">Round shape, advanced care</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Properly cycled tank/aquarium</li>
+                        <li>✓ Regular water changes (25% weekly)</li>
+                        <li>✓ Appropriate tank size for species</li>
+                        <li>✓ Quality filter and heater if needed</li>
+                        <li>✓ Balanced feeding schedule</li>
+                    </ul>
+                `
+            },
+            rabbits: {
+                title: "Rabbits - Complete Guide",
+                icon: "fas fa-carrot",
+                color: "from-rose-400 to-amber-400",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Rabbits</h4>
+                    <p class="text-gray-600 mb-4">Rabbits are gentle, social pets that thrive on routine and companionship. They can be litter trained and make great indoor pets.</p>
+
+                    <h4 class="text-xl font-bold mb-3">Popular Breeds</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Holland Lop</strong>
+                            <p class="text-sm text-gray-600">Friendly, small, calm</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Netherland Dwarf</strong>
+                            <p class="text-sm text-gray-600">Tiny, energetic, curious</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Mini Rex</strong>
+                            <p class="text-sm text-gray-600">Soft coat, gentle</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Flemish Giant</strong>
+                            <p class="text-sm text-gray-600">Large, docile</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Lionhead</strong>
+                            <p class="text-sm text-gray-600">Fluffy mane, friendly</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>English Spot</strong>
+                            <p class="text-sm text-gray-600">Active, spotted pattern</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>French Lop</strong>
+                            <p class="text-sm text-gray-600">Large, floppy ears, calm</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Angora</strong>
+                            <p class="text-sm text-gray-600">Long wool, needs grooming</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Unlimited hay for digestion</li>
+                        <li>✓ Spacious enclosure + exercise time</li>
+                        <li>✓ Litter box training</li>
+                        <li>✓ Chew toys for dental health</li>
+                        <li>✓ Regular grooming and nail trims</li>
+                    </ul>
+                `
+            },
+            reptiles: {
+                title: "Reptiles - Complete Guide",
+                icon: "fas fa-dragon",
+                color: "from-lime-500 to-emerald-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Reptiles</h4>
+                    <p class="text-gray-600 mb-4">Reptiles are fascinating low-noise pets. Each species needs a specific environment with heat, humidity, and UV light.</p>
+
+                    <h4 class="text-xl font-bold mb-3">Popular Species</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Bearded Dragon</strong>
+                            <p class="text-sm text-gray-600">Friendly, curious, active</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Leopard Gecko</strong>
+                            <p class="text-sm text-gray-600">Easy care, calm</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Corn Snake</strong>
+                            <p class="text-sm text-gray-600">Docile, hardy</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Russian Tortoise</strong>
+                            <p class="text-sm text-gray-600">Long-lived, gentle</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Crested Gecko</strong>
+                            <p class="text-sm text-gray-600">Nocturnal, easy care</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Ball Python</strong>
+                            <p class="text-sm text-gray-600">Docile, popular pet snake</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Red-Eared Slider</strong>
+                            <p class="text-sm text-gray-600">Aquatic turtle, long lifespan</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Blue-Tongued Skink</strong>
+                            <p class="text-sm text-gray-600">Unique appearance, calm</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Temperature gradients with heat lamp</li>
+                        <li>✓ UVB lighting for bone health</li>
+                        <li>✓ Species-appropriate diet</li>
+                        <li>✓ Humidity monitoring</li>
+                        <li>✓ Regular habitat cleaning</li>
+                    </ul>
+                `
+            }
+        };
+
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "How much time can you dedicate to pet care daily?",
+                options: [
+                    { text: "2+ hours - I have lots of time", value: "dog" },
+                    { text: "1-2 hours - Moderate time", value: "cat" },
+                    { text: "30 min - 1 hour", value: "bird" },
+                    { text: "Less than 30 minutes", value: "fish" }
+                ]
+            },
+            {
+                question: "What's your living situation?",
+                options: [
+                    { text: "House with yard", value: "dog" },
+                    { text: "Apartment - medium space", value: "cat" },
+                    { text: "Small apartment", value: "bird" },
+                    { text: "Any space works", value: "fish" }
+                ]
+            },
+            {
+                question: "How active is your lifestyle?",
+                options: [
+                    { text: "Very active - love outdoor activities", value: "dog" },
+                    { text: "Moderately active", value: "cat" },
+                    { text: "Prefer indoor activities", value: "bird" },
+                    { text: "Relaxed and calm lifestyle", value: "fish" }
+                ]
+            },
+            {
+                question: "What kind of interaction do you prefer?",
+                options: [
+                    { text: "Physical play and training", value: "dog" },
+                    { text: "Cuddling and independent play", value: "cat" },
+                    { text: "Talking and teaching tricks", value: "bird" },
+                    { text: "Observing and relaxing", value: "fish" }
+                ]
+            },
+            {
+                question: "How do you feel about noise?",
+                options: [
+                    { text: "Don't mind barking", value: "dog" },
+                    { text: "Prefer quiet with occasional sounds", value: "cat" },
+                    { text: "Love chirping and songs", value: "bird" },
+                    { text: "Prefer complete silence", value: "fish" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let quizAnswers = { dog: 0, cat: 0, bird: 0, fish: 0 };
+
+        // Blog Posts Data
+        const blogPosts = {
+            'puppy-training': {
+                title: "How to Train Your Puppy in 30 Days",
+                author: "Dr. Sarah Johnson",
+                date: "Mar 15, 2024",
+                category: "Training",
+                content: `
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">A Step-by-Step Guide to Puppy Training</h3>
+                    <p class="text-gray-600 mb-4">Training a new puppy requires patience, consistency, and positive reinforcement. Here's a comprehensive 30-day plan to help your puppy become a well-behaved family member.</p>
+                    <h4 class="text-xl font-bold text-gray-800 mb-3">Week 1: Foundation Building</h4>
+                    <ul class="space-y-2 text-gray-600 mb-4">
+                        <li><strong>Day 1-3:</strong> Establish a routine for feeding, potty breaks, and sleep</li>
+                        <li><strong>Day 4-7:</strong> Name recognition and "sit" command</li>
+                    </ul>
+                    <h4 class="text-xl font-bold text-gray-800 mb-3">Weeks 2-4: Skills & Habits</h4>
+                    <p class="text-gray-600 mb-4">Focus on socialisation, leash walking, and "stay" commands. Use positive rewards only.</p>
+                `
+            },
+            'cat-food': {
+                title: "Homemade Cat Food Recipes",
+                author: "Chef Maria Chen",
+                date: "Mar 10, 2024",
+                category: "Nutrition",
+                content: `
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Healthy Homemade Cat Food Recipes</h3>
+                    <p class="text-gray-600 mb-4">Control what your cat eats with these simple, vet-approved recipes.</p>
+                    <h4 class="text-xl font-bold text-gray-800 mb-3">Chicken & Rice Delight</h4>
+                    <p class="text-gray-600">1 cup cooked chicken, 1/4 cup cooked rice, and a splash of fish oil for heart health.</p>
+                `
+            },
+            'bird-health': {
+                title: "Signs Your Bird Needs a Vet Visit",
+                author: "Dr. Alex Rodriguez",
+                date: "Mar 5, 2024",
+                category: "Health",
+                content: `
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Bird Health Warning Signs</h3>
+                    <p class="text-gray-600 mb-4">Watch for fluffed feathers, changes in droppings, or reduced activity.</p>
+                `
+            },
+            'rabbit-behavior': {
+                title: "Understanding Rabbit Body Language",
+                author: "Behaviorist Lisa Park",
+                date: "Feb 28, 2024",
+                category: "Behavior",
+                content: `
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Decoding Your Rabbit</h3>
+                    <p class="text-gray-600 mb-4">Ears forward mean curiosity, while thumping means they feel threatened.</p>
+                `
+            },
+            'pet-proofing': {
+                title: "Safe Human Foods for Pets",
+                author: "Emma Davis",
+                date: "Mar 1, 2024",
+                category: "Safety",
+                content: `
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Safe Human Foods for Pets</h3>
+                    <p class="text-gray-600 mb-4">Apples (no seeds), carrots, and plain cooked chicken are generally safe treats.</p>
+                `
+            },
+            'reptile-setup': {
+                title: "Preparing for Your First Reptile Pet",
+                author: "Reptile Specialist David Lee",
+                date: "Feb 18, 2024",
+                category: "Adoption",
+                content: `
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Reptile Setup Basics</h3>
+                    <p class="text-gray-600 mb-4">Heat, UV light, and proper humidity are non-negotiable for a healthy reptile habitat.</p>
+                `
+            }
+        };
+
+        // Pet Name Generator Data
+        const petNames = {
+            dog: {
+                cute: ["Buddy", "Bella", "Charlie", "Luna", "Max", "Daisy", "Cooper", "Lucy"],
+                strong: ["Zeus", "Thor", "Titan", "Athena", "Kaiser", "Valkyrie", "Brutus", "Xena"],
+                unique: ["Zephyr", "Nova", "Koda", "Lyra", "Orion", "Sage", "Kai", "Luna"],
+                funny: ["Sir Barksalot", "Waffles", "Noodle", "Pickles", "Biscuit", "Tater Tot", "Meatball", "Pancake"],
+                classic: ["Rex", "Lady", "King", "Queen", "Duke", "Princess", "Bear", "Shadow"]
+            },
+            cat: {
+                cute: ["Whiskers", "Mittens", "Snowball", "Pumpkin", "Peanut", "Cinnamon", "Mocha", "Ginger"],
+                strong: ["Simba", "Panther", "Tiger", "Jaguar", "Lion", "Saber", "Hunter", "Shadow"],
+                unique: ["Luna", "Nyx", "Phoenix", "Zorro", "Mystique", "Cosmo", "Starlight", "Midnight"],
+                funny: ["Chairman Meow", "Catniss", "Purrsephone", "Sir Pounce", "Fuzz Aldrin", "Cat Damon", "Meowly Cyrus"],
+                classic: ["Felix", "Garfield", "Tom", "Smokey", "Misty", "Tiger", "Oscar", "Molly"]
+            },
+            bird: {
+                cute: ["Sunny", "Sky", "Rainbow", "Peaches", "Blue", "Mango", "Kiwi", "Berry"],
+                strong: ["Phoenix", "Thunder", "Storm", "Eagle", "Hawk", "Falcon", "Raptor", "Zephyr"],
+                unique: ["Aria", "Melody", "Harmony", "Chirp", "Tweet", "Piper", "Sonnet", "Cadence"],
+                funny: ["Bird Reynolds", "Feather Locklear", "Wingston Churchill", "Beaky Blinders", "Polly Pocket"],
+                classic: ["Polly", "Rio", "Coco", "Paco", "Mango", "Kiwi", "Sunny", "Sky"]
+            },
+            rabbit: {
+                cute: ["Bunny", "Flopsy", "Mopsy", "Cottontail", "Thumper", "Honey", "Clover", "Daisy"],
+                strong: ["Thunder", "Storm", "Bolt", "Flash", "Rocky", "Boulder", "Titan", "Hercules"],
+                unique: ["Willow", "Aspen", "Clover", "Hazel", "Basil", "Sage", "Olive", "Pepper"],
+                funny: ["Bugs", "Hopper", "Bounce", "Wiggle", "Fluffernutter", "Bun Bun", "Hopalong"],
+                classic: ["Peter", "Benjamin", "Snowball", "Angel", "Bunny", "Fluffy", "Cotton", "Whiskers"]
+            },
+            reptile: {
+                cute: ["Spike", "Scales", "Slither", "Crawler", "Rex", "Spike", "Ziggy", "Rango"],
+                strong: ["Draco", "Viper", "Python", "Cobra", "Komodo", "Tyrant", "Sauron", "Godzilla"],
+                unique: ["Ember", "Sapphire", "Onyx", "Jade", "Ruby", "Topaz", "Amber", "Crystal"],
+                funny: ["Sir Hiss", "Slithers", "Wigglebottom", "Scale-y Dan", "Cold Blooded Steve"],
+                classic: ["Rex", "Spike", "Fang", "Claw", "Scales", "Slither", "Crawler", "Basil"]
+            },
+            fish: {
+                cute: ["Bubbles", "Finley", "Splash", "Nemo", "Dory", "Goldie", "Pearl", "Coral"],
+                strong: ["Neptune", "Poseidon", "Shark", "Marlin", "Triton", "Ocean", "Tidal", "Wave"],
+                unique: ["Azure", "Cyan", "Indigo", "Aqua", "Marina", "Lagoon", "Reef", "Cove"],
+                funny: ["Fish Stick", "Sushi", "Bait", "Gill-bert", "Fin Diesel", "Swim Shady"],
+                classic: ["Goldie", "Bubbles", "Finny", "Splash", "Nemo", "Dory", "Angel", "Betta"]
+            }
+        };
+
+        let favoriteNames = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts('all');
+            loadQuizQuestion();
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Cart Functions
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCart();
+            showToast(`${product.name} added to cart!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = `${totalItems} saved`;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center">No resources saved yet</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">${item.image}</span>
+                            <div>
+                                <p class="font-medium text-sm">${item.name}</p>
+                                <p class="text-gray-500 text-xs">Saved resource</p>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('No resources saved yet!');
+                return;
+            }
+            showToast('Your resources are ready to download! 📥');
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        // Products Functions
+        function loadProducts(category) {
+            const grid = document.getElementById('products-grid');
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(p => p.category === category);
+            
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-8 text-center">
+                        <span class="text-6xl">${product.image}</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-medium text-purple-600 uppercase">${product.category}</span>
+                            <span class="text-yellow-500">
+                                <i class="fas fa-star"></i> ${product.rating}
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">${product.name}</h3>
+                        <p class="text-gray-500 text-sm mb-4">${product.description}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-purple-600">Free PDF</span>
+                            <button onclick="addToCart(${product.id})" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                                <i class="fas fa-bookmark mr-2"></i>Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(category) {
+            // Update button styles
+            document.querySelectorAll('.shop-filter').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-purple-600', 'text-white');
+            
+            loadProducts(category);
+        }
+
+        // Pet Details Modal
+        function showPetDetails(pet) {
+            const modal = document.getElementById('pet-modal');
+            const content = document.getElementById('modal-content');
+            const details = petDetails[pet];
+            
+            content.innerHTML = `
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-gradient-to-br ${details.color} rounded-full flex items-center justify-center">
+                            <i class="${details.icon} text-3xl text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">${details.title}</h2>
+                    </div>
+                    <button onclick="closePetModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="prose max-w-none">
+                    ${details.content}
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closePetModal() {
+            document.getElementById('pet-modal').classList.add('hidden');
+        }
+
+        // Quiz Functions
+        function loadQuizQuestion() {
+            if (currentQuestion >= quizQuestions.length) {
+                showQuizResult();
+                return;
+            }
+            
+            const q = quizQuestions[currentQuestion];
+            document.getElementById('question-num').textContent = currentQuestion + 1;
+            document.getElementById('quiz-question').textContent = q.question;
+            
+            const optionsHtml = q.options.map((opt, index) => `
+                <button onclick="answerQuiz('${opt.value}')" 
+                    class="p-4 border-2 border-gray-200 rounded-xl text-left hover:border-purple-500 hover:bg-purple-50 transition">
+                    <span class="font-medium">${opt.text}</span>
+                </button>
+            `).join('');
+            
+            document.getElementById('quiz-options').innerHTML = optionsHtml;
+        }
+
+        function answerQuiz(value) {
+            quizAnswers[value]++;
+            currentQuestion++;
+            loadQuizQuestion();
+        }
+
+        function showQuizResult() {
+            const resultPet = Object.keys(quizAnswers).reduce((a, b) => 
+                quizAnswers[a] > quizAnswers[b] ? a : b
+            );
+            
+            const results = {
+                dog: { icon: 'fas fa-dog text-amber-500', title: 'A Dog!', text: 'You\'re active and social - a loyal dog would be your perfect companion! Dogs love outdoor activities and will always be by your side.' },
+                cat: { icon: 'fas fa-cat text-purple-500', title: 'A Cat!', text: 'You appreciate independence with affection - a cat is ideal for you! Cats are perfect for those who want a loving but low-maintenance pet.' },
+                bird: { icon: 'fas fa-dove text-green-500', title: 'A Bird!', text: 'You\'d love a feathered friend! Birds are intelligent, can learn tricks, and will fill your home with beautiful sounds.' },
+                fish: { icon: 'fas fa-fish text-blue-500', title: 'Fish!', text: 'A peaceful aquarium is perfect for you! Fish are calming to watch and require minimal daily interaction.' }
+            };
+            
+            const result = results[resultPet];
+            
+            document.getElementById('quiz-content').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('result-icon').className = result.icon + ' text-8xl mb-6';
+            document.getElementById('result-title').textContent = 'Your Perfect Pet is: ' + result.title;
+            document.getElementById('result-text').textContent = result.text;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            quizAnswers = { dog: 0, cat: 0, bird: 0, fish: 0 };
+            document.getElementById('quiz-content').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuizQuestion();
+        }
+
+        // Search Function
+        function searchContent() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const guideCards = document.querySelectorAll('#pet-guides > div');
+            guideCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(query) ? 'block' : 'none';
+            });
+
+            if (query.length > 2) {
+                showToast(`Searching for "${query}"...`);
+            } else if (query.length === 0) {
+                guideCards.forEach(card => card.style.display = 'block');
+            }
+        }
+
+        function filterCategory() {
+            const category = document.getElementById('category-filter').value;
+            const guideCards = document.querySelectorAll('#pet-guides > div');
+            guideCards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                    return;
+                }
+                const isMatch = card.textContent.toLowerCase().includes(category);
+                card.style.display = isMatch ? 'block' : 'none';
+            });
+            showToast(`Filtering: ${category}`);
+        }
+
+        // Form Functions
+        function subscribe(e) {
+            e.preventDefault();
+            const email = document.getElementById('email-input').value;
+            showToast('Thanks for subscribing! 🎉');
+            document.getElementById('email-input').value = '';
+        }
+
+        function submitContact(e) {
+            e.preventDefault();
+            showToast('Message sent successfully! We\'ll get back to you soon.');
+            e.target.reset();
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Study Tools
+        const flashcards = [
+            "Dogs need routine and consistency for learning.",
+            "Cats show trust by slow blinking.",
+            "Birds need mental stimulation daily.",
+            "Fish thrive with stable water parameters.",
+            "Positive reinforcement builds healthy habits.",
+            "Short training sessions are more effective.",
+            "Nutrition affects behavior and energy levels."
+        ];
+        let flashcardIndex = 0;
+
+        function nextFlashcard() {
+            const flashcard = document.getElementById('flashcard');
+            flashcard.textContent = flashcards[flashcardIndex % flashcards.length];
+            flashcardIndex++;
+        }
+
+        function generatePlan() {
+            const pet = document.getElementById('planner-pet').value;
+            const focus = document.getElementById('planner-focus').value;
+            const output = document.getElementById('planner-output');
+            output.innerHTML = `Your ${pet} study plan (${focus}): <ul class="list-disc list-inside mt-2">
+                <li>Day 1: Core concepts + terminology</li>
+                <li>Day 2: Daily routine checklist</li>
+                <li>Day 3: Common mistakes to avoid</li>
+                <li>Day 4: Case study + quiz</li>
+                <li>Day 5: Summary + resource review</li>
+            </ul>`;
+        }
+
+        function updateHabits() {
+            const checks = document.querySelectorAll('#habit-list input[type="checkbox"]');
+            const completed = Array.from(checks).filter(c => c.checked).length;
+            document.getElementById('habit-progress').textContent = completed;
+        }
+
+        function saveProfile(event) {
+            event.preventDefault();
+            const name = document.getElementById('profile-name').value;
+            const type = document.getElementById('profile-type').value;
+            const age = document.getElementById('profile-age').value;
+            const goal = document.getElementById('profile-goal').value;
+            const output = document.getElementById('profile-output');
+            output.innerHTML = `<strong>${name}</strong> is a ${age}-year-old ${type}. Focus goal: ${goal}. We'll recommend resources for you.`;
+            showToast('Profile saved!');
+            event.target.reset();
+        }
+
+        function generateResourceList() {
+            const pet = document.getElementById('resource-pet').value;
+            const output = document.getElementById('resource-output');
+            const recommended = products.filter(p => p.name.toLowerCase().includes(pet.toLowerCase()) || p.category === 'guides').slice(0, 5);
+            if (recommended.length === 0) {
+                output.textContent = `No recommendations found for ${pet}. Try another pet type.`;
+                return;
+            }
+            output.innerHTML = `Top ${pet} resources:<ul class="list-disc list-inside mt-2">${recommended.map(item => `<li>${item.name}</li>`).join('')}</ul>`;
+        }
+
+        // Pet Name Generator Functions
+        function generatePetNames() {
+            const petType = document.getElementById('pet-type').value;
+            const nameStyle = document.getElementById('name-style').value;
+            const nameList = petNames[petType][nameStyle];
+            
+            const resultsDiv = document.getElementById('name-results');
+            resultsDiv.innerHTML = `
+                <h4 class="font-bold text-gray-700 mb-2">Suggested ${petType.charAt(0).toUpperCase() + petType.slice(1)} Names (${nameStyle} style):</h4>
+                <div class="grid grid-cols-2 gap-2">
+                    ${nameList.map(name => `
+                        <div class="bg-white border border-pink-200 rounded-lg p-2 text-center cursor-pointer hover:bg-pink-50 transition" onclick="selectName('${name}')">
+                            ${name}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            showToast(`Generated ${nameList.length} ${nameStyle} names for ${petType}s!`);
+        }
+
+        function selectName(name) {
+            const selectedName = name;
+            const resultsDiv = document.getElementById('name-results');
+            resultsDiv.innerHTML += `
+                <div class="mt-4 bg-pink-100 border border-pink-300 rounded-lg p-3">
+                    <p class="font-medium text-pink-700">Selected: <span class="text-xl">${selectedName}</span></p>
+                    <p class="text-sm text-pink-600">Click "Save Favorite" to keep this name!</p>
+                </div>
+            `;
+            window.selectedPetName = selectedName;
+        }
+
+        function saveFavoriteName() {
+            if (!window.selectedPetName) {
+                showToast('Please select a name first!');
+                return;
+            }
+            
+            if (!favoriteNames.includes(window.selectedPetName)) {
+                favoriteNames.push(window.selectedPetName);
+                updateFavoriteNames();
+                showToast(`Saved "${window.selectedPetName}" to favorites! ❤️`);
+            } else {
+                showToast('This name is already in your favorites!');
+            }
+        }
+
+        function updateFavoriteNames() {
+            const favoritesDiv = document.getElementById('favorite-names');
+            if (favoriteNames.length === 0) {
+                favoritesDiv.innerHTML = '<p class="text-gray-500">No favorites saved yet</p>';
+                return;
+            }
+            
+            favoritesDiv.innerHTML = favoriteNames.map(name => `
+                <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm flex items-center gap-1">
+                    ${name}
+                    <button onclick="removeFavorite('${name}')" class="text-pink-500 hover:text-pink-700">
+                        <i class="fas fa-times text-xs"></i>
+                    </button>
+                </span>
+            `).join('');
+        }
+
+        function removeFavorite(name) {
+            favoriteNames = favoriteNames.filter(n => n !== name);
+            updateFavoriteNames();
+            showToast(`Removed "${name}" from favorites`);
+        }
+
+        function copyAllNames() {
+            const petType = document.getElementById('pet-type').value;
+            const nameStyle = document.getElementById('name-style').value;
+            const nameList = petNames[petType][nameStyle];
+            
+            const textToCopy = nameList.join('\n');
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => showToast('All names copied to clipboard! 📋'))
+                .catch(err => showToast('Failed to copy names'));
+        }
+
+        // Blog Post Functions
+        function showBlogPost(postId) {
+            const post = blogPosts[postId];
+            if (!post) {
+                showToast('Blog post not found!');
+                return;
+            }
+            
+            const modal = document.getElementById('blog-modal');
+            const content = document.getElementById('blog-modal-content');
+            
+            content.innerHTML = `
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-${getCategoryColor(post.category)}-100 text-${getCategoryColor(post.category)}-600 text-xs font-semibold px-3 py-1 rounded-full">${post.category}</span>
+                            <span class="text-gray-500 text-sm">${post.date}</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
+                        <p class="text-gray-600 mt-2">By ${post.author}</p>
+                    </div>
+                    <button onclick="closeBlogModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="prose max-w-none">
+                    ${post.content}
+                </div>
+                <div class="mt-8 pt-6 border-t">
+                    <button onclick="closeBlogModal()" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+                        Close Article
+                    </button>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+        }
+
+        function getCategoryColor(category) {
+            const colors = {
+                'Training': 'blue',
+                'Nutrition': 'green',
+                'Health': 'purple',
+                'Behavior': 'yellow',
+                'Safety': 'red',
+                'Adoption': 'indigo'
+            };
+            return colors[category] || 'gray';
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+        }
+
+        function showAllBlogPosts() {
+            showToast('Showing all blog posts!');
+            // In a real app, this would load more posts or filter
+            // For now, just show a message
+        }
+
+        // Update all blog post links to use JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update existing blog post links
+            const blogLinks = document.querySelectorAll('a[href="#"]');
+            blogLinks.forEach(link => {
+                if (link.textContent.includes('Read More')) {
+                    link.href = 'javascript:void(0)';
+                    link.onclick = function() {
+                        showBlogPost('puppy-training'); // Default to first post
+                    };
+                }
+            });
+        });
+
+        // Close modals on outside click
+        document.getElementById('pet-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePetModal();
+            }
+        });
+
+        document.getElementById('blog-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBlogModal();
+            }
+        });
+
+        // Pet Comparison Tool
+        const petComparisonData = {
+            dog: {
+                name: 'Dog',
+                lifespan: '10-13 years',
+                size: 'Varies (5-90 kg)',
+                exercise: 'High (1-2 hrs/day)',
+                noise: 'Moderate-High',
+                social: 'Very social',
+                cost: '$50-$200/month',
+                grooming: 'Weekly-Daily',
+                training: 'Moderate-High',
+                space: 'Medium-Large'
+            },
+            cat: {
+                name: 'Cat',
+                lifespan: '12-18 years',
+                size: 'Small-Medium (3-7 kg)',
+                exercise: 'Low-Moderate (30 min/day)',
+                noise: 'Low',
+                social: 'Independent',
+                cost: '$30-$100/month',
+                grooming: 'Weekly',
+                training: 'Low',
+                space: 'Small-Medium'
+            },
+            bird: {
+                name: 'Bird',
+                lifespan: '5-50 years',
+                size: 'Small (0.05-1 kg)',
+                exercise: 'Moderate (1 hr/day)',
+                noise: 'Moderate-High',
+                social: 'Social',
+                cost: '$20-$80/month',
+                grooming: 'Minimal',
+                training: 'Moderate',
+                space: 'Small'
+            },
+            fish: {
+                name: 'Fish',
+                lifespan: '2-20 years',
+                size: 'Tiny-Small (0.01-0.5 kg)',
+                exercise: 'None',
+                noise: 'Silent',
+                social: 'Varies',
+                cost: '$10-$50/month',
+                grooming: 'Tank cleaning',
+                training: 'None',
+                space: 'Small'
+            },
+            rabbit: {
+                name: 'Rabbit',
+                lifespan: '8-12 years',
+                size: 'Small-Medium (1-5 kg)',
+                exercise: 'Moderate (1 hr/day)',
+                noise: 'Low',
+                social: 'Social',
+                cost: '$30-$80/month',
+                grooming: 'Weekly',
+                training: 'Low-Moderate',
+                space: 'Medium'
+            },
+            reptile: {
+                name: 'Reptile',
+                lifespan: '10-40 years',
+                size: 'Varies (0.1-20 kg)',
+                exercise: 'Low',
+                noise: 'Silent',
+                social: 'Solitary',
+                cost: '$20-$100/month',
+                grooming: 'Minimal',
+                training: 'Minimal',
+                space: 'Medium'
+            }
+        };
+
+        function comparePets() {
+            const pet1 = document.getElementById('compare-pet1').value;
+            const pet2 = document.getElementById('compare-pet2').value;
+
+            if (!pet1 || !pet2) {
+                showToast('Please select both pets to compare!');
+                return;
+            }
+
+            const data1 = petComparisonData[pet1];
+            const data2 = petComparisonData[pet2];
+
+            document.getElementById('pet1-header').textContent = data1.name;
+            document.getElementById('pet2-header').textContent = data2.name;
+
+            const characteristics = ['lifespan', 'size', 'exercise', 'noise', 'social', 'cost', 'grooming', 'training', 'space'];
+            const labels = {
+                lifespan: '🕒 Lifespan',
+                size: '📏 Size',
+                exercise: '🏃 Exercise Needs',
+                noise: '🔊 Noise Level',
+                social: '👥 Social Needs',
+                cost: '💰 Monthly Cost',
+                grooming: '✂️ Grooming',
+                training: '🎓 Training Difficulty',
+                space: '🏠 Space Required'
+            };
+
+            const tableContent = characteristics.map(char => `
+                <tr>
+                    <td class="p-4 font-medium text-gray-700">${labels[char]}</td>
+                    <td class="p-4 text-gray-600">${data1[char]}</td>
+                    <td class="p-4 text-gray-600">${data2[char]}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('comparison-table').innerHTML = tableContent;
+            document.getElementById('comparison-results').classList.remove('hidden');
+            showToast(`Comparing ${data1.name} vs ${data2.name}!`);
+        }
+
+        // Pet Care Calculator
+        const careCosts = {
+            dog: { small: 50, medium: 100, large: 200 },
+            cat: { small: 30, medium: 50, large: 80 },
+            bird: { small: 20, medium: 40, large: 80 },
+            fish: { small: 10, medium: 30, large: 50 },
+            rabbit: { small: 30, medium: 50, large: 80 },
+            reptile: { small: 20, medium: 50, large: 100 }
+        };
+
+        const careTime = {
+            dog: { small: 90, medium: 120, large: 180 },
+            cat: { small: 30, medium: 45, large: 60 },
+            bird: { small: 45, medium: 60, large: 90 },
+            fish: { small: 15, medium: 20, large: 30 },
+            rabbit: { small: 45, medium: 60, large: 90 },
+            reptile: { small: 20, medium: 30, large: 45 }
+        };
+
+        const exerciseNeeds = {
+            dog: { small: 'Medium', medium: 'High', large: 'Very High' },
+            cat: { small: 'Low', medium: 'Low', large: 'Medium' },
+            bird: { small: 'Medium', medium: 'Medium', large: 'High' },
+            fish: { small: 'None', medium: 'None', large: 'None' },
+            rabbit: { small: 'Medium', medium: 'Medium', large: 'High' },
+            reptile: { small: 'Low', medium: 'Low', large: 'Medium' }
+        };
+
+        function calculateCare() {
+            const petType = document.getElementById('calc-pet-type').value;
+            const size = document.getElementById('calc-size').value;
+
+            const cost = careCosts[petType][size];
+            const time = careTime[petType][size];
+            const exercise = exerciseNeeds[petType][size];
+
+            document.getElementById('food-cost').textContent = `$${cost}/mo`;
+            document.getElementById('care-time').textContent = `${time} min`;
+            document.getElementById('exercise-level').textContent = exercise;
+
+            // Animate bars
+            const costPercent = (cost / 200) * 100;
+            const timePercent = (time / 180) * 100;
+            const exercisePercent = { 'None': 0, 'Low': 25, 'Medium': 50, 'High': 75, 'Very High': 100 }[exercise];
+
+            document.getElementById('food-bar').style.width = `${Math.min(costPercent, 100)}%`;
+            document.getElementById('time-bar').style.width = `${Math.min(timePercent, 100)}%`;
+            document.getElementById('exercise-bar').style.width = `${exercisePercent}%`;
+
+            showToast(`Calculated care needs for ${size} ${petType}!`);
+        }
+    </script>
+</body>
+</html>
