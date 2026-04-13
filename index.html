@@ -769,9 +769,11 @@
                         <h3 class="text-xl font-bold text-purple-700">Featured Resource Pack</h3>
                         <p class="text-gray-600">Download a complete pet learning bundle with guides, planners, glossaries, and printable worksheets.</p>
                     </div>
-                    <button onclick="showToast('Resource pack saved to your library!')" class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition">
+                   
+                    <button onclick="downloadBundlePDF()" class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition">
                         <i class="fas fa-download mr-2"></i>Get Bundle
                     </button>
+
                 </div>
             </div>
             
@@ -917,7 +919,7 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-4">
-                            <span class="bg-indigo-100 text-indigo-600 text-xs font-semibold px-3 py-1 rounded-full">Adoption</span>
+                            <span class="bg-indigo-1
                             <span class="text-gray-500 text-sm">Feb 18, 2024</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-3">Preparing for Your First Reptile Pet</h3>
@@ -1426,26 +1428,26 @@
     <script>
         // Product Data
         const products = [
-            { id: 1, name: "Dog Care Starter Guide (PDF)", price: 0.00, category: "guides", image: "📘", rating: 4.9, description: "Basics of training, feeding, and safety" },
-            { id: 2, name: "Cat Behavior Handbook (PDF)", price: 0.00, category: "books", image: "📗", rating: 4.7, description: "Understand moods, habits, and care" },
-            { id: 3, name: "Bird Care Study Notes", price: 0.00, category: "guides", image: "📙", rating: 4.6, description: "Cage setup, diet, and daily routines" },
-            { id: 4, name: "Fish Aquarium Planner", price: 0.00, category: "plans", image: "📒", rating: 4.5, description: "Tank cycling checklist and schedule" },
-            { id: 5, name: "Pet Nutrition Chart", price: 0.00, category: "guides", image: "📋", rating: 4.8, description: "Food portions and healthy treat list" },
-            { id: 6, name: "Cat Health Glossary", price: 0.00, category: "dictionaries", image: "📕", rating: 4.4, description: "Easy terms for common cat health" },
-            { id: 7, name: "Dog Training Routine (PDF)", price: 0.00, category: "plans", image: "📝", rating: 4.7, description: "Weekly plan for obedience training" },
-            { id: 8, name: "Pet First Aid Notes", price: 0.00, category: "books", image: "📚", rating: 4.8, description: "Emergency response for common issues" },
-            { id: 9, name: "Bird Vocabulary Dictionary", price: 0.00, category: "dictionaries", image: "📓", rating: 4.3, description: "Simple terms for bird care" },
-            { id: 10, name: "Cat Care Study Plan", price: 0.00, category: "plans", image: "🗓️", rating: 4.6, description: "Daily and weekly care schedule" },
-            { id: 11, name: "Pet Habitats Guide", price: 0.00, category: "guides", image: "🏡", rating: 4.7, description: "Home setup for dogs, cats, birds, fish" },
-            { id: 12, name: "Pet Care Dictionary", price: 0.00, category: "dictionaries", image: "📖", rating: 4.5, description: "Quick definitions of pet care terms" },
-            { id: 13, name: "Pet Study Workbook", price: 0.00, category: "worksheets", image: "🧾", rating: 4.8, description: "Printable worksheets to track learning" },
-            { id: 14, name: "Vet Visit Preparation Sheet", price: 0.00, category: "worksheets", image: "🩺", rating: 4.6, description: "Checklist for health appointments" },
-            { id: 15, name: "Dog Breed Comparison Chart", price: 0.00, category: "guides", image: "📊", rating: 4.7, description: "Compare energy, size, and care needs" },
-            { id: 16, name: "Cat Body Language Cards", price: 0.00, category: "worksheets", image: "🃏", rating: 4.5, description: "Visual cards for cat mood learning" },
-            { id: 17, name: "Pet Safety Home Audit", price: 0.00, category: "worksheets", image: "🛡️", rating: 4.7, description: "Room-by-room safety checklist" },
-            { id: 18, name: "Bird Care Glossary", price: 0.00, category: "dictionaries", image: "📘", rating: 4.4, description: "Key vocabulary for bird owners" },
-            { id: 19, name: "Fish Tank Maintenance Guide", price: 0.00, category: "books", image: "📘", rating: 4.6, description: "Step-by-step maintenance routines" },
-            { id: 20, name: "Pet Study Roadmap", price: 0.00, category: "plans", image: "🧭", rating: 4.8, description: "Week-by-week learning path" }
+            { id: 1, name: "Dog Care Starter Guide (PDF)", price: 0.00, category: "guides", image: "📘", rating: 4.9, description: "Basics of training, feeding, and safety", pdf: "Dog Care Starter Guide.pdf" },
+            { id: 2, name: "Cat Behavior Handbook (PDF)", price: 0.00, category: "books", image: "📗", rating: 4.7, description: "Understand moods, habits, and care", pdf: "Cat Behavior Handbook (PDF).pdf" },
+            { id: 3, name: "Bird Care Study Notes", price: 0.00, category: "guides", image: "📙", rating: 4.6, description: "Cage setup, diet, and daily routines", pdf: "Bird Care Study Notes.pdf" },
+            { id: 4, name: "Fish Aquarium Planner", price: 0.00, category: "plans", image: "📒", rating: 4.5, description: "Tank cycling checklist and schedule", pdf: "Fish Aquarium Planner.pdf" },
+            { id: 5, name: "Pet Nutrition Chart", price: 0.00, category: "guides", image: "📋", rating: 4.8, description: "Food portions and healthy treat list", pdf: "Pet Nutrition Chart.pdf" },
+            { id: 6, name: "Cat Health Glossary", price: 0.00, category: "dictionaries", image: "📕", rating: 4.4, description: "Easy terms for common cat health", pdf: "Cat Health Glossary.pdf" },
+            { id: 7, name: "Dog Training Routine (PDF)", price: 0.00, category: "plans", image: "📝", rating: 4.7, description: "Weekly plan for obedience training", pdf: "Dog Training Routine (PDF).pdf" },
+            { id: 8, name: "Pet First Aid Notes", price: 0.00, category: "books", image: "📚", rating: 4.8, description: "Emergency response for common issues", pdf: "Pet First Aid Notes.pdf" },
+            { id: 9, name: "Bird Vocabulary Dictionary", price: 0.00, category: "dictionaries", image: "📓", rating: 4.3, description: "Simple terms for bird care", pdf: "Bird Vocabulary Dictionary.pdf" },
+            { id: 10, name: "Cat Care Study Plan", price: 0.00, category: "plans", image: "🗓️", rating: 4.6, description: "Daily and weekly care schedule", pdf: "Cat Care Study Plan.pdf" },
+            { id: 11, name: "Pet Habitats Guide", price: 0.00, category: "guides", image: "🏡", rating: 4.7, description: "Home setup for dogs, cats, birds, fish", pdf: "Pet Habitats Guide.pdf" },
+            { id: 12, name: "Pet Care Dictionary", price: 0.00, category: "dictionaries", image: "📖", rating: 4.5, description: "Quick definitions of pet care terms", pdf: "Pet Care Dictionary.pdf" },
+            { id: 13, name: "Pet Study Workbook", price: 0.00, category: "worksheets", image: "🧾", rating: 4.8, description: "Printable worksheets to track learning", pdf: "Pet Study Workbook.pdf" },
+            { id: 14, name: "Vet Visit Preparation Sheet", price: 0.00, category: "worksheets", image: "🩺", rating: 4.6, description: "Checklist for health appointments", pdf: "Vet Visit Preparation Sheet.pdf" },
+            { id: 15, name: "Dog Breed Comparison Chart", price: 0.00, category: "guides", image: "📊", rating: 4.7, description: "Compare energy, size, and care needs", pdf: "Dog Breed Comparison Chart.pdf" },
+            { id: 16, name: "Cat Body Language Cards", price: 0.00, category: "worksheets", image: "🃏", rating: 4.5, description: "Visual cards for cat mood learning", pdf: "Cat Body Language Cards.pdf" },
+            { id: 17, name: "Pet Safety Home Audit", price: 0.00, category: "worksheets", image: "🛡️", rating: 4.7, description: "Room-by-room safety checklist", pdf: "Pet Safety Home Audit.pdf" },
+            { id: 18, name: "Bird Care Glossary", price: 0.00, category: "dictionaries", image: "📘", rating: 4.4, description: "Key vocabulary for bird owners", pdf: "Bird Care Glossary.pdf" },
+            { id: 19, name: "Fish Tank Maintenance Guide", price: 0.00, category: "books", image: "📘", rating: 4.6, description: "Step-by-step maintenance routines", pdf: "Fish Tank Maintenance Guide.pdf" },
+            { id: 20, name: "Pet Study Roadmap", price: 0.00, category: "plans", image: "🧭", rating: 4.8, description: "Week-by-week learning path", pdf: "Pet Study Roadmap.pdf" }
         ];
 
         // Cart
@@ -2025,10 +2027,51 @@
                 showToast('No resources saved yet!');
                 return;
             }
-            showToast('Your resources are ready to download! 📥');
+            downloadCartAsPDF();
             cart = [];
             updateCart();
             toggleCart();
+        }
+
+        function downloadResourcePDF(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.pdf) return;
+            const a = document.createElement('a');
+            a.href = encodeURIComponent(product.pdf);
+            a.download = product.pdf;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast(`Downloading: ${product.name} 📥`);
+        }
+
+        function downloadBundlePDF() {
+            showToast('Starting bundle download — all 20 files will save to your Downloads folder 📥');
+            products.forEach((p, i) => {
+                setTimeout(() => {
+                    const a = document.createElement('a');
+                    a.href = encodeURIComponent(p.pdf);
+                    a.download = p.pdf;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }, i * 600);
+            });
+        }
+
+        function downloadCartAsPDF() {
+            if (cart.length === 0) return;
+            showToast(`Downloading ${cart.length} saved resource(s) 📥`);
+            cart.forEach((p, i) => {
+                setTimeout(() => {
+                    const a = document.createElement('a');
+                    a.href = encodeURIComponent(p.pdf);
+                    a.download = p.pdf;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }, i * 600);
+            });
         }
 
         // Products Functions
@@ -2054,8 +2097,8 @@
                         <p class="text-gray-500 text-sm mb-4">${product.description}</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm font-semibold text-purple-600">Free PDF</span>
-                            <button onclick="addToCart(${product.id})" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
-                                <i class="fas fa-bookmark mr-2"></i>Save
+                            <button onclick="downloadResourcePDF(${product.id})" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                                <i class="fas fa-download mr-2"></i>Download
                             </button>
                         </div>
                     </div>
