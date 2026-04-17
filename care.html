@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPedia | Care</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex items-center justify-between h-20">
+            <a href="home.html" class="flex items-center gap-3 text-2xl font-bold text-gray-900 hover:text-purple-600">
+              <i class="fas fa-paw text-purple-600"></i>
+              <span>PetPedia</span>
+            </a>
+      
+            <div class="hidden lg:flex items-center gap-1">
+              <a href="home.html" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">Home</a>
+      
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-sm font-medium text-gray-700 inline-flex items-center gap-2">
+                  Guides <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="guide.html#pets" class="dropdown-link">Pet Guides</a>
+                  <a href="guide.html#compare" class="dropdown-link">Compare Pets</a>
+                </div>
+              </div>
+      
+              <div class="group relative">
+                <button class="nav-link nav-tools-pill px-4 py-2 text-sm font-semibold rounded-full inline-flex items-center gap-2">
+                  Care <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="care.html#care" class="dropdown-link">Care Tips</a>
+                  <a href="care.html#knowledge" class="dropdown-link">Knowledge</a>
+                </div>
+              </div>
+      
+              <div class="group relative">
+               <button class="nav-link px-4 py-2 text-sm font-medium text-gray-700 inline-flex items-center gap-2">
+                 Tools <i class="fas fa-chevron-down text-xs"></i>
+               </button>
+            <div class="dropdown-menu">
+              <a href="tool.html#name-generator" class="dropdown-link">Name Generator</a>
+              <a href="tool.html#calculator" class="dropdown-link">Calculator</a>
+              <a href="tool.html#quiz" class="dropdown-link">Quiz</a>
+                </div>
+                </div>
+      
+              <a href="blog.html" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">Blog</a>
+      
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-sm font-medium text-gray-700 inline-flex items-center gap-2">
+                  Resources <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="resource.html#shop" class="dropdown-link">Downloads</a>
+                  <a href="resource.html#shop" class="dropdown-link">External Resources</a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="flex items-center gap-3">
+              <button class="nav-search-btn hidden lg:inline-flex items-center justify-center w-11 h-11 rounded-full">
+                <i class="fas fa-search"></i>
+              </button>
+              <a href="tool.html" class="hidden lg:inline-flex items-center gap-2 bg-purple-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
+                Explore Tools
+              </a>
+              <button onclick="toggleMobileMenu()" class="lg:hidden p-3 rounded-full text-gray-600 hover:bg-gray-100">
+                <i class="fas fa-bars text-xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <main class="pt-24">
+        <section id="care" class="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Care Tips</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Essential tips to keep your pets healthy, happy, and thriving.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-heartbeat text-2xl text-red-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Health & Wellness</h3>
+                        <p class="text-gray-600 mb-4">Regular vet care keeps your pet healthy and prevents illness.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Annual health exams</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Vaccination schedules</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Dental care routine</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-utensils text-2xl text-green-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Nutrition Guide</h3>
+                        <p class="text-gray-600 mb-4">Good nutrition keeps your pet healthy. Know what to feed and what to avoid.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Balanced meals</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Safe treats</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Fresh water</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-dumbbell text-2xl text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Exercise & Play</h3>
+                        <p class="text-gray-600 mb-4">Keep your pet active and engaged with regular exercise and play..</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Daily movement</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Interactive toys</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mental challenges</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-brush text-2xl text-purple-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Grooming & Hygiene</h3>
+                        <p class="text-gray-600 mb-4">Simple routines keep coats shiny and skin healthy.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Brushing</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Nail trims & ear checks</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Bathing</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-shield-halved text-2xl text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Safe Home Setup</h3>
+                        <p class="text-gray-600 mb-4">Create a safe space where your pet can explore freely and safely.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Safe toys</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Secure areas</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Emergency planning</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-brain text-2xl text-pink-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Training & Enrichment</h3>
+                        <p class="text-gray-600 mb-4">Keep training fun and engaging to boost your pet's skills and happiness.</p>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Positive rewards</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Puzzles</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Short sessions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="knowledge" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Knowledge Hub</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Quick facts, training checklists, and study tools to make your learning easier.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Quick Care Checklist</h3>
+                            <span class="text-purple-600 text-2xl"><i class="fas fa-clipboard-list"></i></span>
+                        </div>
+                        <ul class="space-y-3 text-gray-600">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Daily water refresh</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Balanced meals</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Clean living space</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Exercise time</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Weekly grooming</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Training Steps</h3>
+                            <span class="text-indigo-600 text-2xl"><i class="fas fa-route"></i></span>
+                        </div>
+                        <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                            <li>Set a routine</li>
+                            <li>Use positive rewards</li>
+                            <li>Keep sessions short</li>
+                            <li>Introduce simple commands</li>
+                            <li>Track progress weekly</li>
+                        </ol>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Pet Facts</h3>
+                            <span class="text-pink-600 text-2xl"><i class="fas fa-lightbulb"></i></span>
+                        </div>
+                        <div class="space-y-3 text-gray-600">
+                            <p><strong>Dogs:</strong> Can learn 100+ words.</p>
+                            <p><strong>Cats:</strong> Sleep 12-16 hours daily.</p>
+                            <p><strong>Birds:</strong> Some parrots live 40+ years.</p>
+                            <p><strong>Fish:</strong> Goldfish can recognize faces.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Nutrition Table</h3>
+                            <span class="text-green-600 text-2xl"><i class="fas fa-table"></i></span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-600">
+                                <thead class="text-gray-700">
+                                    <tr>
+                                        <th class="py-2">Pet</th>
+                                        <th class="py-2">Main Food</th>
+                                        <th class="py-2">Treats</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-t">
+                                        <td class="py-2">Dog</td>
+                                        <td class="py-2">Protein + Veg</td>
+                                        <td class="py-2">Biscuits</td>
+                                    </tr>
+                                    <tr class="border-t">
+                                        <td class="py-2">Cat</td>
+                                        <td class="py-2">Meat-based</td>
+                                        <td class="py-2">Fish bites</td>
+                                    </tr>
+                                    <tr class="border-t">
+                                        <td class="py-2">Bird</td>
+                                        <td class="py-2">Seeds + Fruits</td>
+                                        <td class="py-2">Millet</td>
+                                    </tr>
+                                    <tr class="border-t">
+                                        <td class="py-2">Fish</td>
+                                        <td class="py-2">Pellets</td>
+                                        <td class="py-2">Worms</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Weekly Planner</h3>
+                            <span class="text-blue-600 text-2xl"><i class="fas fa-calendar-check"></i></span>
+                        </div>
+                        <div class="space-y-3 text-gray-600">
+                            <p><strong>Mon:</strong> Grooming + walk</p>
+                            <p><strong>Wed:</strong> Training session</p>
+                            <p><strong>Fri:</strong> Health check</p>
+                            <p><strong>Weekend:</strong> Play + bonding</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Habitat Setup</h3>
+                            <span class="text-yellow-600 text-2xl"><i class="fas fa-home"></i></span>
+                        </div>
+                        <div class="text-gray-600 space-y-3">
+                            <p><strong>Dogs/Cats:</strong> Quiet corner + bedding</p>
+                            <p><strong>Birds:</strong> Large cage + perches</p>
+                            <p><strong>Fish:</strong> Filtered tank + plants</p>
+                            <p><strong>Tip:</strong> Keep space calm and safe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2026 PetPedia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
+        }
+    </script>
+</body>
+</html>

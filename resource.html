@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPedia | Resources</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex items-center justify-between h-20">
+            <a href="home.html" class="flex items-center gap-3 text-2xl font-bold text-gray-900 hover:text-purple-600">
+              <i class="fas fa-paw text-purple-600"></i>
+              <span>PetPedia</span>
+            </a>
+      
+            <div class="hidden lg:flex items-center gap-1">
+              <a href="home.html" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">Home</a>
+      
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-sm font-medium text-gray-700 inline-flex items-center gap-2">
+                  Guides <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="guide.html#pets" class="dropdown-link">Pet Guides</a>
+                  <a href="guide.html#compare" class="dropdown-link">Compare Pets</a>
+                </div>
+              </div>
+      
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-sm font-medium text-gray-700 inline-flex items-center gap-2">
+                  Care <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="care.html#care" class="dropdown-link">Care Tips</a>
+                  <a href="care.html#knowledge" class="dropdown-link">Knowledge</a>
+                </div>
+              </div>
+      
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-sm font-medium text-gray-700 inline-flex items-center gap-2">
+                  Tools <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="tool.html#name-generator" class="dropdown-link">Name Generator</a>
+                  <a href="tool.html#calculator" class="dropdown-link">Calculator</a>
+                  <a href="tool.html#quiz" class="dropdown-link">Quiz</a>
+                </div>
+              </div>
+      
+              <a href="blog.html" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">Blog</a>
+      
+            <div class="group relative">
+  <button class="nav-tools-pill px-4 py-2 text-sm font-semibold rounded-full inline-flex items-center gap-2">
+    Resources <i class="fas fa-chevron-down text-xs"></i>
+  </button>
+  <div class="dropdown-menu">
+    <a href="resource.html#shop" class="dropdown-link">Downloads</a>
+    <a href="resource.html#shop" class="dropdown-link">External Resources</a>
+  </div>
+</div>
+      
+            <div class="flex items-center gap-3">
+              <button class="nav-search-btn hidden lg:inline-flex items-center justify-center w-11 h-11 rounded-full">
+                <i class="fas fa-search"></i>
+              </button>
+              <a href="tool.html" class="hidden lg:inline-flex items-center gap-2 bg-purple-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
+                Explore Tools
+              </a>
+              <button onclick="toggleMobileMenu()" class="lg:hidden p-3 rounded-full text-gray-600 hover:bg-gray-100">
+                <i class="fas fa-bars text-xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <main class="pt-24">
+        <section id="shop" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Resource Library</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Free pet care study materials, worksheets, and PDF guides for every type of pet.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="filterProducts('all')" class="shop-filter active px-6 py-3 rounded-full bg-purple-600 text-white font-medium">All Resources</button>
+                    <button onclick="filterProducts('guides')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium">Guides</button>
+                    <button onclick="filterProducts('books')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium">Books</button>
+                    <button onclick="filterProducts('plans')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium">Plans</button>
+                    <button onclick="filterProducts('dictionaries')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium">Dictionaries</button>
+                    <button onclick="filterProducts('worksheets')" class="shop-filter px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium">Worksheets</button>
+                </div>
+
+                <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2026 PetPedia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
+ const products = [
+            { id: 1, name: "Dog Care Starter Guide (PDF)", price: 0.00, category: "guides", image: "📘", rating: 4.9, description: "Basics of training, feeding, and safety", pdf: "Dog Care Starter Guide.pdf" },
+            { id: 2, name: "Cat Behavior Handbook (PDF)", price: 0.00, category: "books", image: "📗", rating: 4.7, description: "Understand moods, habits, and care", pdf: "Cat Behavior Handbook (PDF).pdf" },
+            { id: 3, name: "Bird Care Study Notes", price: 0.00, category: "guides", image: "📙", rating: 4.6, description: "Cage setup, diet, and daily routines", pdf: "Bird Care Study Notes.pdf" },
+            { id: 4, name: "Fish Aquarium Planner", price: 0.00, category: "plans", image: "📒", rating: 4.5, description: "Tank cycling checklist and schedule", pdf: "Fish Aquarium Planner.pdf" },
+            { id: 5, name: "Pet Nutrition Chart", price: 0.00, category: "guides", image: "📋", rating: 4.8, description: "Food portions and healthy treat list", pdf: "Pet Nutrition Chart.pdf" },
+            { id: 6, name: "Cat Health Glossary", price: 0.00, category: "dictionaries", image: "📕", rating: 4.4, description: "Easy terms for common cat health", pdf: "Cat Health Glossary.pdf" },
+            { id: 7, name: "Dog Training Routine (PDF)", price: 0.00, category: "plans", image: "📝", rating: 4.7, description: "Weekly plan for obedience training", pdf: "Dog Training Routine (PDF).pdf" },
+            { id: 8, name: "Pet First Aid Notes", price: 0.00, category: "books", image: "📚", rating: 4.8, description: "Emergency response for common issues", pdf: "Pet First Aid Notes.pdf" },
+            { id: 9, name: "Bird Vocabulary Dictionary", price: 0.00, category: "dictionaries", image: "📓", rating: 4.3, description: "Simple terms for bird care", pdf: "Bird Vocabulary Dictionary.pdf" },
+            { id: 10, name: "Cat Care Study Plan", price: 0.00, category: "plans", image: "🗓️", rating: 4.6, description: "Daily and weekly care schedule", pdf: "Cat Care Study Plan.pdf" },
+            { id: 11, name: "Pet Habitats Guide", price: 0.00, category: "guides", image: "🏡", rating: 4.7, description: "Home setup for dogs, cats, birds, fish", pdf: "Pet Habitats Guide.pdf" },
+            { id: 12, name: "Pet Care Dictionary", price: 0.00, category: "dictionaries", image: "📖", rating: 4.5, description: "Quick definitions of pet care terms", pdf: "Pet Care Dictionary.pdf" },
+            { id: 13, name: "Pet Study Workbook", price: 0.00, category: "worksheets", image: "🧾", rating: 4.8, description: "Printable worksheets to track learning", pdf: "Pet Study Workbook.pdf" },
+            { id: 14, name: "Vet Visit Preparation Sheet", price: 0.00, category: "worksheets", image: "🩺", rating: 4.6, description: "Checklist for health appointments", pdf: "Vet Visit Preparation Sheet.pdf" },
+            { id: 15, name: "Dog Breed Comparison Chart", price: 0.00, category: "guides", image: "📊", rating: 4.7, description: "Compare energy, size, and care needs", pdf: "Dog Breed Comparison Chart.pdf" },
+            { id: 16, name: "Cat Body Language Cards", price: 0.00, category: "worksheets", image: "🃏", rating: 4.5, description: "Visual cards for cat mood learning", pdf: "Cat Body Language Cards.pdf" },
+            { id: 17, name: "Pet Safety Home Audit", price: 0.00, category: "worksheets", image: "🛡️", rating: 4.7, description: "Room-by-room safety checklist", pdf: "Pet Safety Home Audit.pdf" },
+            { id: 18, name: "Bird Care Glossary", price: 0.00, category: "dictionaries", image: "📘", rating: 4.4, description: "Key vocabulary for bird owners", pdf: "Bird Care Glossary.pdf" },
+            { id: 19, name: "Fish Tank Maintenance Guide", price: 0.00, category: "books", image: "📘", rating: 4.6, description: "Step-by-step maintenance routines", pdf: "Fish Tank Maintenance Guide.pdf" },
+            { id: 20, name: "Pet Study Roadmap", price: 0.00, category: "plans", image: "🧭", rating: 4.8, description: "Week-by-week learning path", pdf: "Pet Study Roadmap.pdf" }
+        ];
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
+        }
+
+        function loadProducts(category = 'all') {
+            const grid = document.getElementById('products-grid');
+            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            grid.innerHTML = filtered.map(product => `
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="bg-gradient-to-br from-purple-100 to-indigo-100 p-8 text-center">
+                        <span class="text-6xl">${product.image}</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-medium text-purple-600 uppercase">${product.category}</span>
+                            <span class="text-yellow-500">
+                                <i class="fas fa-star"></i> ${product.rating}
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">${product.name}</h3>
+                        <p class="text-gray-500 text-sm mb-4">${product.description}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-purple-600">Free PDF</span>
+                            <button onclick="downloadResourcePDF(${product.id})" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                                <i class="fas fa-download mr-2"></i>Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(category) {
+            document.querySelectorAll('.shop-filter').forEach(btn => {
+                btn.classList.remove('bg-purple-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-purple-600', 'text-white');
+            loadProducts(category);
+        }
+
+        function downloadResourcePDF(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            const a = document.createElement('a');
+            a.href = encodeURIComponent(product.pdf);
+            a.download = product.pdf;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast(`Downloading ${product.name}`);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => loadProducts());
+    </script>
+</body>
+</html>
