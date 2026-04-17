@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPedia | Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex items-center justify-between h-20">
+            <a href="home.html" class="flex items-center gap-3 text-2xl font-bold text-gray-900 hover:text-purple-600">
+              <i class="fas fa-paw text-purple-600"></i>
+              <span>PetPedia</span>
+            </a>
+      
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="home.html" class="nav-link px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900">
+                Home
+              </a>
+
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                  Guides <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="guide.html#pets" class="dropdown-link">Pet Guides</a>
+                  <a href="guide.html#compare" class="dropdown-link">Compare Pets</a>
+                </div>
+              </div>
+
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                  Care <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="care.html#care" class="dropdown-link">Care Tips</a>
+                  <a href="care.html#knowledge" class="dropdown-link">Knowledge</a>
+                </div>
+              </div>
+
+              <div class="group relative">
+                <button class="nav-tools-pill px-4 py-2 text-base font-semibold rounded-full inline-flex items-center gap-2 active">
+                  Tools <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="tool.html#name-generator" class="dropdown-link">Name Generator</a>
+                  <a href="tool.html#calculator" class="dropdown-link">Calculator</a>
+                  <a href="tool.html#quiz" class="dropdown-link">Quiz</a>
+                </div>
+              </div>
+
+              <a href="blog.html" class="nav-link px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900">
+                Blog
+              </a>
+
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                  Resources <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="resource.html#shop" class="dropdown-link">Downloads</a>
+                  <a href="resource.html#shop" class="dropdown-link">External Resources</a>
+                  
+                </div>
+              </div>
+            </div>
+      
+            <div class="flex items-center gap-3">
+              <button class="nav-search-btn hidden lg:inline-flex items-center justify-center w-11 h-11 rounded-full">
+                <i class="fas fa-search"></i>
+              </button>
+              <a href="tool.html" class="hidden lg:inline-flex items-center gap-2 bg-purple-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
+                Explore Tools
+              </a>
+              <button onclick="toggleMobileMenu()" class="lg:hidden p-3 rounded-full text-gray-600 hover:bg-gray-100">
+                <i class="fas fa-bars text-xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <main class="pt-24">
+        <section id="tools" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Study Tools & Learning Aids</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Interactive tools designed to help you learn pet care faster.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-calendar-alt text-2xl text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Daily Study Planner</h3>
+                                <p class="text-gray-500 text-sm">Auto-generate a care study plan.</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-2">Select pet type</label>
+                                <select id="planner-pet" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none">
+                                    <option value="Dog">Dog</option>
+                                    <option value="Cat">Cat</option>
+                                    <option value="Bird">Bird</option>
+                                    <option value="Fish">Fish</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-2">Study focus</label>
+                                <select id="planner-focus" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none">
+                                    <option value="Care & Routine">Care & Routine</option>
+                                    <option value="Nutrition">Nutrition</option>
+                                    <option value="Training & Behavior">Training & Behavior</option>
+                                    <option value="Health & Safety">Health & Safety</option>
+                                </select>
+                            </div>
+                            <button onclick="generatePlan()" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                                Generate Plan
+                            </button>
+                            <div id="planner-output" class="bg-purple-50 border border-purple-100 rounded-xl p-4 text-sm text-gray-600">Your study plan will appear here.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clipboard-check text-2xl text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Care Habit Tracker</h3>
+                                <p class="text-gray-500 text-sm">Mark tasks to build consistency.</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3" id="habit-list">
+                            <label class="flex items-center gap-3 text-gray-600">
+                                <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()" />
+                                Feed with balanced nutrition
+                            </label>
+                            <label class="flex items-center gap-3 text-gray-600">
+                                <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()" />
+                                Fresh water refill
+                            </label>
+                            <label class="flex items-center gap-3 text-gray-600">
+                                <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()" />
+                                Grooming or hygiene check
+                            </label>
+                            <label class="flex items-center gap-3 text-gray-600">
+                                <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()" />
+                                Enrichment or play session
+                            </label>
+                            <label class="flex items-center gap-3 text-gray-600">
+                                <input type="checkbox" class="h-4 w-4 text-purple-600 rounded" onchange="updateHabits()" />
+                                Health observation notes
+                            </label>
+                        </div>
+                        <div class="mt-4 bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm text-gray-600">
+                            <span class="font-semibold">Progress:</span>
+                            <span id="habit-progress">0</span>/5 tasks completed
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-pink-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-book-open text-2xl text-pink-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Pet Knowledge Flashcards</h3>
+                                <p class="text-gray-500 text-sm">Tap to reveal quick tips.</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div id="flashcard" class="bg-gray-50 border-2 border-dashed border-pink-200 rounded-2xl p-6 text-gray-700 min-h-[160px] flex items-center justify-center text-center">
+                                Tap “Next Tip” to reveal flashcards.
+                            </div>
+                            <button onclick="nextFlashcard()" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700 transition">
+                                Next Tip
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Skill Builder Map</h3>
+                        <p class="text-gray-600 mb-6">Follow a simple learning path that helps you learn pet care step by step.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">1</span>
+                                <p class="text-gray-700">Basics: safety, routine, habitat setup.</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center font-bold">2</span>
+                                <p class="text-gray-700">Nutrition: balanced meals and treats.</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">3</span>
+                                <p class="text-gray-700">Behavior: training and enrichment.</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="w-10 h-10 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold">4</span>
+                                <p class="text-gray-700">Health: preventive care and warning signs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Pet Profile Builder</h3>
+                        <p class="text-gray-600 mb-6">Create a quick profile to personalize your tools.</p>
+                        <form onsubmit="saveProfile(event)" class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input id="profile-name" type="text" placeholder="Pet name" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none" required />
+                                <select id="profile-type" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none">
+                                    <option>Dog</option>
+                                    <option>Cat</option>
+                                    <option>Bird</option>
+                                    <option>Fish</option>
+                                </select>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input id="profile-age" type="number" min="0" placeholder="Age" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none" required />
+                                <input id="profile-goal" type="text" placeholder="Care goal" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-purple-500 focus:outline-none" required />
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+                                Save Profile
+                            </button>
+                        </form>
+                        <div id="profile-output" class="mt-4 bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm text-gray-600">Your profile summary will appear here.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Care Calculator</h2>
+                    <p class="text-xl text-gray-600">Estimate monthly care cost and daily time.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Pet Information</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-600 mb-2">Pet Type</label>
+                                    <select id="calc-pet-type" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-green-500 focus:outline-none">
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="bird">Bird</option>
+                                        <option value="fish">Fish</option>
+                                        <option value="rabbit">Rabbit</option>
+                                        <option value="reptile">Reptile</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-600 mb-2">Size</label>
+                                    <select id="calc-size" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-green-500 focus:outline-none">
+                                        <option value="small">Small</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="large">Large</option>
+                                    </select>
+                                </div>
+                                <button onclick="calculateCare()" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                                    <i class="fas fa-calculator mr-2"></i> Calculate
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Estimated Results</h3>
+                            <div id="calc-results" class="space-y-4">
+                                <div class="bg-white rounded-lg p-4 shadow">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-gray-600">Monthly Food Cost</span>
+                                        <span id="food-cost" class="text-2xl font-bold text-green-600">-</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div id="food-bar" class="bg-green-500 h-2 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 shadow">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-gray-600">Daily Care Time</span>
+                                        <span id="care-time" class="text-2xl font-bold text-blue-600">-</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div id="time-bar" class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 shadow">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-gray-600">Exercise Needs</span>
+                                        <span id="exercise-level" class="text-2xl font-bold text-purple-600">-</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div id="exercise-bar" class="bg-purple-500 h-2 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="name-generator" class="py-20 bg-gradient-to-br from-pink-50 to-rose-50">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Name Generator</h2>
+                    <p class="text-xl text-gray-600">Generate creative names for your new pet.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Generate Names</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-600 mb-2">Pet Type</label>
+                                    <select id="pet-type" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-pink-500 focus:outline-none">
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="bird">Bird</option>
+                                        <option value="rabbit">Rabbit</option>
+                                        <option value="reptile">Reptile</option>
+                                        <option value="fish">Fish</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-600 mb-2">Name Style</label>
+                                    <select id="name-style" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-pink-500 focus:outline-none">
+                                        <option value="cute">Cute & Playful</option>
+                                        <option value="strong">Strong & Powerful</option>
+                                        <option value="unique">Unique & Creative</option>
+                                        <option value="funny">Funny & Quirky</option>
+                                        <option value="classic">Classic & Traditional</option>
+                                    </select>
+                                </div>
+                                <button onclick="generatePetNames()" class="w-full bg-pink-600 text-white py-3 rounded-lg font-semibold hover:bg-pink-700 transition">
+                                    <i class="fas fa-magic mr-2"></i> Generate Names
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Generated Names</h3>
+                            <div id="name-results" class="bg-pink-50 border-2 border-pink-100 rounded-xl p-4 min-h-[200px]">
+                                <p class="text-gray-500 text-center">Click "Generate Names" to see suggestions.</p>
+                            </div>
+                            <div class="mt-4 flex gap-2">
+                                <button onclick="saveFavoriteName()" class="flex-1 bg-pink-100 text-pink-600 py-2 rounded-lg hover:bg-pink-200 transition">
+                                    <i class="fas fa-heart mr-2"></i> Save Favorite
+                                </button>
+                                <button onclick="copyAllNames()" class="flex-1 bg-pink-100 text-pink-600 py-2 rounded-lg hover:bg-pink-200 transition">
+                                    <i class="fas fa-copy mr-2"></i> Copy All
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4">Your Favorite Names</h4>
+                        <div id="favorite-names" class="flex flex-wrap gap-2">
+                            <p class="text-gray-500">No favorites saved yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="py-20 bg-gradient-to-r from-purple-600 to-indigo-600">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-white mb-4">Find Your Perfect Pet!</h2>
+                <p class="text-xl text-purple-100 mb-8">Take our quiz to discover which pet matches your lifestyle.</p>
+
+                <div id="quiz-container" class="bg-white rounded-2xl p-8 shadow-2xl">
+                    <div id="quiz-content">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Question <span id="question-num">1</span> of 5</h3>
+                        <p id="quiz-question" class="text-xl text-gray-700 mb-8"></p>
+                        <div id="quiz-options" class="grid md:grid-cols-2 gap-4"></div>
+                    </div>
+                    <div id="quiz-result" class="hidden text-center">
+                        <i id="result-icon" class="text-8xl mb-6"></i>
+                        <h3 id="result-title" class="text-3xl font-bold text-gray-800 mb-4"></h3>
+                        <p id="result-text" class="text-xl text-gray-600 mb-6"></p>
+                        <button onclick="restartQuiz()" class="bg-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
+                            Take Quiz Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>© 2026 PetPedia. Made with <i class="fas fa-heart text-red-500"></i> for pet lovers.</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
+        let favoriteNames = [];
+        let selectedPetName = "";
+        let currentQuestion = 0;
+        let quizAnswers = { dog: 0, cat: 0, bird: 0, fish: 0 };
+
+        const flashcards = [
+            "Dogs need routine and consistency.",
+            "Cats show trust by slow blinking.",
+            "Birds need mental stimulation daily.",
+            "Fish thrive with stable water conditions.",
+            "Positive reinforcement builds good habits.",
+            "Short training sessions are more effective.",
+            "Nutrition affects energy and mood."
+        ];
+
+        const quizQuestions = [
+            {
+                question: "How much time can you dedicate to pet care daily?",
+                options: [
+                    { text: "2+ hours - I have lots of time", value: "dog" },
+                    { text: "1-2 hours - Moderate time", value: "cat" },
+                    { text: "30 min - 1 hour", value: "bird" },
+                    { text: "Less than 30 minutes", value: "fish" }
+                ]
+            },
+            {
+                question: "What's your living situation?",
+                options: [
+                    { text: "House with yard", value: "dog" },
+                    { text: "Apartment - medium space", value: "cat" },
+                    { text: "Small apartment", value: "bird" },
+                    { text: "Any space works", value: "fish" }
+                ]
+            },
+            {
+                question: "How active is your lifestyle?",
+                options: [
+                    { text: "Very active - love outdoor activities", value: "dog" },
+                    { text: "Moderately active", value: "cat" },
+                    { text: "Prefer indoor activities", value: "bird" },
+                    { text: "Relaxed and calm lifestyle", value: "fish" }
+                ]
+            },
+            {
+                question: "What kind of interaction do you prefer?",
+                options: [
+                    { text: "Physical play and training", value: "dog" },
+                    { text: "Cuddling and independent play", value: "cat" },
+                    { text: "Talking and teaching tricks", value: "bird" },
+                    { text: "Observing and relaxing", value: "fish" }
+                ]
+            },
+            {
+                question: "How do you feel about noise?",
+                options: [
+                    { text: "Don't mind barking", value: "dog" },
+                    { text: "Prefer quiet with occasional sounds", value: "cat" },
+                    { text: "Love chirping and songs", value: "bird" },
+                    { text: "Prefer complete silence", value: "fish" }
+                ]
+            }
+        ];
+
+        const petNames = {
+            dog: {
+                cute: ["Buddy","Bella","Charlie","Luna"],
+                strong: ["Zeus","Thor","Titan","Kaiser"],
+                unique: ["Zephyr","Nova","Koda","Lyra"],
+                funny: ["Sir Barksalot","Waffles","Noodle","Pickles"],
+                classic: ["Rex","Lady","King","Bear"]
+            },
+            cat: {
+                cute: ["Whiskers","Mittens","Snowball","Pumpkin"],
+                strong: ["Simba","Panther","Tiger","Jaguar"],
+                unique: ["Nyx","Phoenix","Mystique","Cosmo"],
+                funny: ["Chairman Meow","Catniss","Fuzz Aldrin","Meowly Cyrus"],
+                classic: ["Felix","Garfield","Tom","Misty"]
+            },
+            bird: {
+                cute: ["Sunny","Sky","Rainbow","Mango"],
+                strong: ["Phoenix","Thunder","Storm","Eagle"],
+                unique: ["Aria","Melody","Harmony","Piper"],
+                funny: ["Bird Reynolds","Wingston Churchill","Beaky Blinders","Polly Pocket"],
+                classic: ["Polly","Rio","Coco","Paco"]
+            },
+            rabbit: {
+                cute: ["Bunny","Flopsy","Thumper","Clover"],
+                strong: ["Thunder","Bolt","Rocky","Titan"],
+                unique: ["Willow","Aspen","Sage","Pepper"],
+                funny: ["Bugs","Hopper","Wigglebottom","Fluffernutter"],
+                classic: ["Peter","Benjamin","Snowball","Angel"]
+            },
+            reptile: {
+                cute: ["Spike","Scales","Rango","Ziggy"],
+                strong: ["Draco","Viper","Cobra","Python"],
+                unique: ["Ember","Jade","Onyx","Sapphire"],
+                funny: ["Sir Hiss","Slithers","Scale-y Dan","Cold Blooded Steve"],
+                classic: ["Rex","Spike","Fang","Claw"]
+            },
+            fish: {
+                cute: ["Bubbles","Finley","Splash","Nemo"],
+                strong: ["Neptune","Poseidon","Shark","Marlin"],
+                unique: ["Azure","Lagoon","Reef","Cove"],
+                funny: ["Fish Stick","Gill-bert","Fin Diesel","Swim Shady"],
+                classic: ["Goldie","Bubbles","Finny","Dory"]
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadQuizQuestion();
+            updateFavoriteNames();
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById("mobile-menu");
+            if (!menu) return;
+            menu.classList.toggle("hidden");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            const toastMessage = document.getElementById("toast-message");
+            toastMessage.textContent = message;
+            toast.classList.remove("translate-y-20", "opacity-0");
+            setTimeout(() => toast.classList.add("translate-y-20", "opacity-0"), 3000);
+        }
+
+        function generatePlan() {
+            const pet = document.getElementById("planner-pet").value;
+            const focus = document.getElementById("planner-focus").value;
+            const output = document.getElementById("planner-output");
+            output.innerHTML = `Your ${pet} study plan (${focus}): <ul class="list-disc list-inside mt-2">
+                <li>Day 1: Core concepts and routine</li>
+                <li>Day 2: Nutrition and feeding</li>
+                <li>Day 3: Grooming and health</li>
+                <li>Day 4: Training and behavior</li>
+                <li>Day 5: Review and practice</li>
+            </ul>`;
+            showToast("Study plan generated!");
+        }
+
+        function updateHabits() {
+            const checks = document.querySelectorAll("#habit-list input[type='checkbox']");
+            const completed = Array.from(checks).filter(c => c.checked).length;
+            document.getElementById("habit-progress").textContent = completed;
+        }
+
+        function nextFlashcard() {
+            document.getElementById("flashcard").textContent = flashcards[flashcardIndex % flashcards.length];
+            flashcardIndex++;
+        }
+
+        let flashcardIndex = 0;
+
+        function saveProfile(event) {
+            event.preventDefault();
+            const name = document.getElementById("profile-name").value;
+            const type = document.getElementById("profile-type").value;
+            const age = document.getElementById("profile-age").value;
+            const goal = document.getElementById("profile-goal").value;
+            document.getElementById("profile-output").innerHTML = `<strong>${name}</strong> is a ${age}-year-old ${type}. Goal: ${goal}.`;
+            showToast("Profile saved!");
+            event.target.reset();
+        }
+
+        function generateResourceList() {
+            const pet = document.getElementById("resource-pet") ? document.getElementById("resource-pet").value : "Dog";
+            const output = document.getElementById("resource-output");
+            output.innerHTML = `Top ${pet} resources:<ul class="list-disc list-inside mt-2">
+                <li>Pet care essentials guide</li>
+                <li>Nutrition checklist</li>
+                <li>Training planner</li>
+            </ul>`;
+            showToast("Recommendations generated!");
+        }
+
+        function generatePetNames() {
+            const petType = document.getElementById("pet-type").value;
+            const nameStyle = document.getElementById("name-style").value;
+            const nameList = petNames[petType][nameStyle];
+            document.getElementById("name-results").innerHTML = `
+                <h4 class="font-bold text-gray-700 mb-2">${nameType(petType)} names:</h4>
+                <div class="grid grid-cols-2 gap-2">
+                    ${nameList.map((name) => `<div class="bg-white border border-pink-200 rounded-lg p-2 text-center cursor-pointer hover:bg-pink-50 transition" onclick="selectName('${name}')">${name}</div>`).join("")}
+                </div>`;
+            showToast("Name suggestions generated!");
+        }
+
+        function nameType(type) {
+            return type.charAt(0).toUpperCase() + type.slice(1);
+        }
+
+        function selectName(name) {
+            selectedPetName = name;
+            const results = document.getElementById("name-results");
+            results.innerHTML += `
+                <div class="mt-4 bg-pink-100 border border-pink-300 rounded-lg p-3">
+                    <p class="font-medium text-pink-700">Selected: <span class="text-xl">${name}</span></p>
+                </div>`;
+        }
+
+        function saveFavoriteName() {
+            if (!selectedPetName) {
+                showToast("Please select a name first!");
+                return;
+            }
+            if (!favoriteNames.includes(selectedPetName)) {
+                favoriteNames.push(selectedPetName);
+                updateFavoriteNames();
+                showToast(`Saved "${selectedPetName}"!`);
+            } else {
+                showToast("Name already saved.");
+            }
+        }
+
+        function updateFavoriteNames() {
+            const favoritesDiv = document.getElementById("favorite-names");
+            if (!favoritesDiv) return;
+            if (favoriteNames.length === 0) {
+                favoritesDiv.innerHTML = '<p class="text-gray-500">No favorites saved yet</p>';
+                return;
+            }
+            favoritesDiv.innerHTML = favoriteNames.map((name) => `
+                <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm flex items-center gap-1">
+                    ${name}
+                    <button onclick="removeFavorite('${name}')" class="text-pink-500 hover:text-pink-700"><i class="fas fa-times text-xs"></i></button>
+                </span>
+            `).join("");
+        }
+
+        function removeFavorite(name) {
+            favoriteNames = favoriteNames.filter((n) => n !== name);
+            updateFavoriteNames();
+            showToast(`Removed "${name}"`);
+        }
+
+        function copyAllNames() {
+            const petType = document.getElementById("pet-type").value;
+            const nameStyle = document.getElementById("name-style").value;
+            const nameList = petNames[petType][nameStyle];
+            navigator.clipboard.writeText(nameList.join("\n")).then(() => showToast("Names copied!"));
+        }
+
+        function loadQuizQuestion() {
+            if (currentQuestion >= quizQuestions.length) {
+                showQuizResult();
+                return;
+            }
+            const q = quizQuestions[currentQuestion];
+            document.getElementById("question-num").textContent = currentQuestion + 1;
+            document.getElementById("quiz-question").textContent = q.question;
+            document.getElementById("quiz-options").innerHTML = q.options.map((opt) => `
+                <button onclick="answerQuiz('${opt.value}')" class="p-4 border-2 border-gray-200 rounded-xl text-left hover:border-purple-500 hover:bg-purple-50 transition">
+                    <span class="font-medium">${opt.text}</span>
+                </button>
+            `).join("");
+        }
+
+        function answerQuiz(value) {
+            quizAnswers[value]++;
+            currentQuestion++;
+            loadQuizQuestion();
+        }
+
+        function showQuizResult() {
+            const resultPet = Object.keys(quizAnswers).reduce((a, b) => quizAnswers[a] > quizAnswers[b] ? a : b);
+            const results = {
+                dog: { icon: "fas fa-dog text-amber-500", title: "A Dog!", text: "A loyal dog would be your perfect companion." },
+                cat: { icon: "fas fa-cat text-purple-500", title: "A Cat!", text: "A cat is ideal for someone who wants independence plus affection." },
+                bird: { icon: "fas fa-dove text-green-500", title: "A Bird!", text: "A bird would brighten your home with song and personality." },
+                fish: { icon: "fas fa-fish text-blue-500", title: "Fish!", text: "A peaceful aquarium is perfect for your lifestyle." }
+            };
+            const result = results[resultPet];
+            document.getElementById("quiz-content").classList.add("hidden");
+            document.getElementById("quiz-result").classList.remove("hidden");
+            document.getElementById("result-icon").className = result.icon + " text-8xl mb-6";
+            document.getElementById("result-title").textContent = result.title;
+            document.getElementById("result-text").textContent = result.text;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            quizAnswers = { dog: 0, cat: 0, bird: 0, fish: 0 };
+            document.getElementById("quiz-content").classList.remove("hidden");
+            document.getElementById("quiz-result").classList.add("hidden");
+            loadQuizQuestion();
+        }
+    </script>
+</body>
+</html>
