@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPedia | Guides</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="flex items-center justify-between h-20">
+            <a href="home.html" class="flex items-center gap-3 text-2xl font-bold text-gray-900 hover:text-purple-600">
+              <i class="fas fa-paw text-purple-600"></i>
+              <span>PetPedia</span>
+            </a>
+      
+            <div class="hidden lg:flex items-center gap-1">
+              <a href="home.html" class="nav-tools-pill px-4 py-2 text-base font-semibold rounded-full inline-flex items-center gap-2">
+                Home
+              </a>
+
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                  Guides <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="guide.html#pets" class="dropdown-link">Pet Guides</a>
+                  <a href="guide.html#compare" class="dropdown-link">Compare Pets</a>
+                </div>
+              </div>
+
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                  Care <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="care.html#care" class="dropdown-link">Care Tips</a>
+                  <a href="care.html#knowledge" class="dropdown-link">Knowledge</a>
+                </div>
+              </div>
+
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                  Tools <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="tool.html#name-generator" class="dropdown-link">Name Generator</a>
+                  <a href="tool.html#calculator" class="dropdown-link">Calculator</a>
+                  <a href="tool.html#quiz" class="dropdown-link">Quiz</a>
+                </div>
+              </div>
+
+              <a href="blog.html" class="nav-link px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900">
+                Blog
+              </a>
+
+              <div class="group relative">
+                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                  Resources <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="resource.html#shop" class="dropdown-link">Downloads</a>
+                  <a href="resource.html#shop" class="dropdown-link">External Resources</a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="flex items-center gap-3">
+              <button class="nav-search-btn hidden lg:inline-flex items-center justify-center w-11 h-11 rounded-full">
+                <i class="fas fa-search"></i>
+              </button>
+              <a href="tool.html" class="hidden lg:inline-flex items-center gap-2 bg-purple-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
+                Explore Tools
+              </a>
+              <button onclick="toggleMobileMenu()" class="lg:hidden p-3 rounded-full text-gray-600 hover:bg-gray-100">
+                <i class="fas fa-bars text-xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <main class="pt-24">
+        <section id="pets" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Study Guides</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive guides and comparisons to help you choose and care for the right pet.</p>
+                </div>
+
+        <div id="pet-guides" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Dogs -->
+            <div class="card-hover bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('dogs')">
+                <div class="p-8 text-white">
+                    <i class="fas fa-dog text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Dogs</h3>
+                    <p class="text-amber-100 mb-4">Man's best friend - loyal, loving companions</p>
+                    <ul class="text-sm space-y-1 text-amber-50">
+                        <li><i class="fas fa-check mr-2"></i>300+ Breeds</li>
+                        <li><i class="fas fa-check mr-2"></i>Training Guides</li>
+                        <li><i class="fas fa-check mr-2"></i>Health Tips</li>
+                    </ul>
+                    <button class="mt-4 bg-white text-orange-500 px-4 py-2 rounded-lg font-semibold hover:bg-orange-100 transition">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Cats -->
+            <div class="card-hover bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('cats')">
+                <div class="p-8 text-white">
+                    <i class="fas fa-cat text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Cats</h3>
+                    <p class="text-purple-100 mb-4">Independent, graceful, and adorable felines</p>
+                    <ul class="text-sm space-y-1 text-purple-50">
+                        <li><i class="fas fa-check mr-2"></i>70+ Breeds</li>
+                        <li><i class="fas fa-check mr-2"></i>Behavior Guide</li>
+                        <li><i class="fas fa-check mr-2"></i>Nutrition Info</li>
+                    </ul>
+                    <button class="mt-4 bg-white text-pink-500 px-4 py-2 rounded-lg font-semibold hover:bg-pink-100 transition">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Birds -->
+            <div class="card-hover bg-gradient-to-br from-green-400 to-teal-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('birds')">
+                <div class="p-8 text-white">
+                    <i class="fas fa-dove text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Birds</h3>
+                    <p class="text-green-100 mb-4">Beautiful feathered companions</p>
+                    <ul class="text-sm space-y-1 text-green-50">
+                        <li><i class="fas fa-check mr-2"></i>50+ Species</li>
+                        <li><i class="fas fa-check mr-2"></i>Cage Setup</li>
+                        <li><i class="fas fa-check mr-2"></i>Diet Plans</li>
+                    </ul>
+                    <button class="mt-4 bg-white text-teal-500 px-4 py-2 rounded-lg font-semibold hover:bg-teal-100 transition">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Fish -->
+            <div class="card-hover bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('fish')">
+                <div class="p-8 text-white">
+                    <i class="fas fa-fish text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Fish</h3>
+                    <p class="text-blue-100 mb-4">Peaceful aquatic pets for your home</p>
+                    <ul class="text-sm space-y-1 text-blue-50">
+                        <li><i class="fas fa-check mr-2"></i>100+ Species</li>
+                        <li><i class="fas fa-check mr-2"></i>Tank Setup</li>
+                        <li><i class="fas fa-check mr-2"></i>Water Care</li>
+                    </ul>
+                    <button class="mt-4 bg-white text-indigo-500 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-100 transition">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Rabbits -->
+            <div class="card-hover bg-gradient-to-br from-rose-400 to-amber-400 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('rabbits')">
+                <div class="p-8 text-white">
+                    <i class="fas fa-carrot text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Rabbits</h3>
+                    <p class="text-rose-100 mb-4">Gentle, social companions with big personalities</p>
+                    <ul class="text-sm space-y-1 text-rose-50">
+                        <li><i class="fas fa-check mr-2"></i>Indoor-friendly</li>
+                        <li><i class="fas fa-check mr-2"></i>Hay-based diets</li>
+                        <li><i class="fas fa-check mr-2"></i>Litter training</li>
+                    </ul>
+                    <button class="mt-4 bg-white text-rose-500 px-4 py-2 rounded-lg font-semibold hover:bg-rose-100 transition">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reptiles -->
+            <div class="card-hover bg-gradient-to-br from-lime-500 to-emerald-500 rounded-2xl overflow-hidden cursor-pointer" onclick="showPetDetails('reptiles')">
+                <div class="p-8 text-white">
+                    <i class="fas fa-dragon text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Reptiles</h3>
+                    <p class="text-lime-100 mb-4">Calm, fascinating pets with unique habitats</p>
+                    <ul class="text-sm space-y-1 text-lime-50">
+                        <li><i class="fas fa-check mr-2"></i>Heat & UV setup</li>
+                        <li><i class="fas fa-check mr-2"></i>Species-specific diets</li>
+                        <li><i class="fas fa-check mr-2"></i>Low noise care</li>
+                    </ul>
+                    <button class="mt-4 bg-white text-emerald-600 px-4 py-2 rounded-lg font-semibold hover:bg-emerald-100 transition">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+              </div>
+           </div>
+       </div>
+   </section>
+
+        <section id="compare" class="py-20 bg-gradient-to-br from-cyan-50 to-blue-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Pet Comparison Tool</h2>
+                    <p class="text-xl text-gray-600">Compare different pets side-by-side to find your perfect match.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2">Pet 1</label>
+                            <select id="compare-pet1" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
+                                <option value="">Select Pet</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="bird">Bird</option>
+                                <option value="fish">Fish</option>
+                                <option value="rabbit">Rabbit</option>
+                                <option value="reptile">Reptile</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2">Pet 2</label>
+                            <select id="compare-pet2" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-blue-500 focus:outline-none">
+                                <option value="">Select Pet</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="bird">Bird</option>
+                                <option value="fish">Fish</option>
+                                <option value="rabbit">Rabbit</option>
+                                <option value="reptile">Reptile</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="comparePets()" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                                <i class="fas fa-balance-scale mr-2"></i> Compare
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="comparison-results" class="hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-blue-50">
+                                    <tr>
+                                        <th class="p-4 font-bold text-gray-700">Characteristic</th>
+                                        <th id="pet1-header" class="p-4 font-bold text-gray-700">Pet 1</th>
+                                        <th id="pet2-header" class="p-4 font-bold text-gray-700">Pet 2</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="comparison-table" class="divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="pet-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div id="modal-content" class="p-8"></div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2026 PetPedia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
+        }
+
+        const petDetails = {
+            dogs: {
+                title: "Dogs - Complete Guide",
+                icon: "fas fa-dog",
+                color: "from-amber-400 to-orange-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Dogs</h4>
+                    <p class="text-gray-600 mb-4">Dogs have been human companions for over 15,000 years. They are known for their loyalty, intelligence, and ability to form strong bonds with their owners.</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Breeds</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Labrador Retriever</strong>
+                            <p class="text-sm text-gray-600">Friendly, active, outgoing</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>German Shepherd</strong>
+                            <p class="text-sm text-gray-600">Loyal, confident, courageous</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Golden Retriever</strong>
+                            <p class="text-sm text-gray-600">Intelligent, friendly, devoted</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Bulldog</strong>
+                            <p class="text-sm text-gray-600">Calm, courageous, friendly</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Poodle</strong>
+                            <p class="text-sm text-gray-600">Intelligent, active, hypoallergenic</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Beagle</strong>
+                            <p class="text-sm text-gray-600">Curious, friendly, great with kids</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Rottweiler</strong>
+                            <p class="text-sm text-gray-600">Loyal, confident, protective</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg">
+                            <strong>Yorkshire Terrier</strong>
+                            <p class="text-sm text-gray-600">Affectionate, brave, small size</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Daily exercise: 30 min - 2 hours depending on breed</li>
+                        <li>✓ Regular grooming based on coat type</li>
+                        <li>✓ Balanced diet with quality protein</li>
+                        <li>✓ Annual vet check-ups and vaccinations</li>
+                        <li>✓ Mental stimulation and training</li>
+                    </ul>
+                `
+            },
+            cats: {
+                title: "Cats - Complete Guide",
+                icon: "fas fa-cat",
+                color: "from-purple-400 to-pink-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Cats</h4>
+                    <p class="text-gray-600 mb-4">Cats have been domesticated for around 10,000 years. They are independent yet affectionate pets known for their graceful movements and unique personalities.</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Breeds</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Persian</strong>
+                            <p class="text-sm text-gray-600">Gentle, quiet, sweet</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Maine Coon</strong>
+                            <p class="text-sm text-gray-600">Gentle giant, playful</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Siamese</strong>
+                            <p class="text-sm text-gray-600">Vocal, social, intelligent</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>British Shorthair</strong>
+                            <p class="text-sm text-gray-600">Easy-going, loyal, calm</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Bengal</strong>
+                            <p class="text-sm text-gray-600">Active, athletic, wild look</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Ragdoll</strong>
+                            <p class="text-sm text-gray-600">Relaxed, affectionate, gentle</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Sphynx</strong>
+                            <p class="text-sm text-gray-600">Hairless, energetic, affectionate</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <strong>Scottish Fold</strong>
+                            <p class="text-sm text-gray-600">Sweet, calm, folded ears</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Clean litter box maintained daily</li>
+                        <li>✓ Regular brushing based on coat length</li>
+                        <li>✓ Fresh water and quality cat food</li>
+                        <li>✓ Scratching posts and climbing spaces</li>
+                        <li>✓ Interactive play sessions daily</li>
+                    </ul>
+                `
+            },
+            birds: {
+                title: "Birds - Complete Guide",
+                icon: "fas fa-dove",
+                color: "from-green-400 to-teal-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Pet Birds</h4>
+                    <p class="text-gray-600 mb-4">Birds make wonderful pets with their beautiful colors, songs, and personalities. Many species can learn to talk and perform tricks!</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Species</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Budgerigar (Budgie)</strong>
+                            <p class="text-sm text-gray-600">Small, colorful, can talk</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Cockatiel</strong>
+                            <p class="text-sm text-gray-600">Friendly, whistles melodies</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Lovebird</strong>
+                            <p class="text-sm text-gray-600">Affectionate, colorful</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>African Grey</strong>
+                            <p class="text-sm text-gray-600">Highly intelligent talker</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Canary</strong>
+                            <p class="text-sm text-gray-600">Beautiful singer, low maintenance</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Parakeet</strong>
+                            <p class="text-sm text-gray-600">Social, active, easy to train</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Macaw</strong>
+                            <p class="text-sm text-gray-600">Large, colorful, long lifespan</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <strong>Finch</strong>
+                            <p class="text-sm text-gray-600">Small, active, best in pairs</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Spacious cage with perches</li>
+                        <li>✓ Fresh seeds, pellets, fruits & veggies</li>
+                        <li>✓ Clean water changed daily</li>
+                        <li>✓ Regular out-of-cage time</li>
+                        <li>✓ Mental stimulation with toys</li>
+                    </ul>
+                `
+            },
+            fish: {
+                title: "Fish - Complete Guide",
+                icon: "fas fa-fish",
+                color: "from-blue-400 to-indigo-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Pet Fish</h4>
+                    <p class="text-gray-600 mb-4">Fish are peaceful, beautiful pets that can reduce stress. From colorful bettas to graceful goldfish, there's a fish for every aquarist!</p>
+                    
+                    <h4 class="text-xl font-bold mb-3">Popular Species</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Betta Fish</strong>
+                            <p class="text-sm text-gray-600">Colorful, solitary, easy care</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Goldfish</strong>
+                            <p class="text-sm text-gray-600">Classic, hardy, social</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Guppy</strong>
+                            <p class="text-sm text-gray-600">Colorful, active, breeds easily</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Neon Tetra</strong>
+                            <p class="text-sm text-gray-600">Schooling fish, vibrant colors</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Angelfish</strong>
+                            <p class="text-sm text-gray-600">Graceful, triangular shape</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Molly</strong>
+                            <p class="text-sm text-gray-600">Peaceful, adaptable, livebearer</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Platy</strong>
+                            <p class="text-sm text-gray-600">Colorful, peaceful, easy care</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <strong>Discus</strong>
+                            <p class="text-sm text-gray-600">Round shape, advanced care</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Properly cycled tank/aquarium</li>
+                        <li>✓ Regular water changes (25% weekly)</li>
+                        <li>✓ Appropriate tank size for species</li>
+                        <li>✓ Quality filter and heater if needed</li>
+                        <li>✓ Balanced feeding schedule</li>
+                    </ul>
+                `
+            },
+            rabbits: {
+                title: "Rabbits - Complete Guide",
+                icon: "fas fa-carrot",
+                color: "from-rose-400 to-amber-400",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Rabbits</h4>
+                    <p class="text-gray-600 mb-4">Rabbits are gentle, social pets that thrive on routine and companionship. They can be litter trained and make great indoor pets.</p>
+
+                    <h4 class="text-xl font-bold mb-3">Popular Breeds</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Holland Lop</strong>
+                            <p class="text-sm text-gray-600">Friendly, small, calm</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Netherland Dwarf</strong>
+                            <p class="text-sm text-gray-600">Tiny, energetic, curious</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Mini Rex</strong>
+                            <p class="text-sm text-gray-600">Soft coat, gentle</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Flemish Giant</strong>
+                            <p class="text-sm text-gray-600">Large, docile</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Lionhead</strong>
+                            <p class="text-sm text-gray-600">Fluffy mane, friendly</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>English Spot</strong>
+                            <p class="text-sm text-gray-600">Active, spotted pattern</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>French Lop</strong>
+                            <p class="text-sm text-gray-600">Large, floppy ears, calm</p>
+                        </div>
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                            <strong>Angora</strong>
+                            <p class="text-sm text-gray-600">Long wool, needs grooming</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Unlimited hay for digestion</li>
+                        <li>✓ Spacious enclosure + exercise time</li>
+                        <li>✓ Litter box training</li>
+                        <li>✓ Chew toys for dental health</li>
+                        <li>✓ Regular grooming and nail trims</li>
+                    </ul>
+                `
+            },
+            reptiles: {
+                title: "Reptiles - Complete Guide",
+                icon: "fas fa-dragon",
+                color: "from-lime-500 to-emerald-500",
+                content: `
+                    <h4 class="text-xl font-bold mb-3">About Reptiles</h4>
+                    <p class="text-gray-600 mb-4">Reptiles are fascinating low-noise pets. Each species needs a specific environment with heat, humidity, and UV light.</p>
+
+                    <h4 class="text-xl font-bold mb-3">Popular Species</h4>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Bearded Dragon</strong>
+                            <p class="text-sm text-gray-600">Friendly, curious, active</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Leopard Gecko</strong>
+                            <p class="text-sm text-gray-600">Easy care, calm</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Corn Snake</strong>
+                            <p class="text-sm text-gray-600">Docile, hardy</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Russian Tortoise</strong>
+                            <p class="text-sm text-gray-600">Long-lived, gentle</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Crested Gecko</strong>
+                            <p class="text-sm text-gray-600">Nocturnal, easy care</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Ball Python</strong>
+                            <p class="text-sm text-gray-600">Docile, popular pet snake</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Red-Eared Slider</strong>
+                            <p class="text-sm text-gray-600">Aquatic turtle, long lifespan</p>
+                        </div>
+                        <div class="bg-lime-50 p-3 rounded-lg">
+                            <strong>Blue-Tongued Skink</strong>
+                            <p class="text-sm text-gray-600">Unique appearance, calm</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-bold mb-3">Care Requirements</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✓ Temperature gradients with heat lamp</li>
+                        <li>✓ UVB lighting for bone health</li>
+                        <li>✓ Species-appropriate diet</li>
+                        <li>✓ Humidity monitoring</li>
+                        <li>✓ Regular habitat cleaning</li>
+                    </ul>
+                `
+            }
+        };
+
+
+        const petComparisonData = {
+            dog: {
+                name: 'Dog',
+                lifespan: '10-13 years',
+                size: 'Varies',
+                exercise: 'High',
+                noise: 'Moderate-High',
+                social: 'Very social',
+                cost: '$50-$200/month',
+                grooming: 'Weekly-Daily',
+                training: 'Moderate-High',
+                space: 'Medium-Large'
+            },
+            cat: {
+                name: 'Cat',
+                lifespan: '12-18 years',
+                size: 'Small-Medium',
+                exercise: 'Low-Moderate',
+                noise: 'Low',
+                social: 'Independent',
+                cost: '$30-$100/month',
+                grooming: 'Weekly',
+                training: 'Low',
+                space: 'Small-Medium'
+            },
+            bird: {
+                name: 'Bird',
+                lifespan: '5-50 years',
+                size: 'Small',
+                exercise: 'Moderate',
+                noise: 'Moderate-High',
+                social: 'Social',
+                cost: '$20-$80/month',
+                grooming: 'Minimal',
+                training: 'Moderate',
+                space: 'Small'
+            },
+            fish: {
+                name: 'Fish',
+                lifespan: '2-20 years',
+                size: 'Tiny-Small',
+                exercise: 'None',
+                noise: 'Silent',
+                social: 'Varies',
+                cost: '$10-$50/month',
+                grooming: 'Tank cleaning',
+                training: 'None',
+                space: 'Small'
+            },
+            rabbit: {
+                name: 'Rabbit',
+                lifespan: '8-12 years',
+                size: 'Small-Medium',
+                exercise: 'Moderate',
+                noise: 'Low',
+                social: 'Social',
+                cost: '$30-$80/month',
+                grooming: 'Weekly',
+                training: 'Low-Moderate',
+                space: 'Medium'
+            },
+            reptile: {
+                name: 'Reptile',
+                lifespan: '10-40 years',
+                size: 'Varies',
+                exercise: 'Low',
+                noise: 'Silent',
+                social: 'Solitary',
+                cost: '$20-$100/month',
+                grooming: 'Minimal',
+                training: 'Minimal',
+                space: 'Medium'
+            }
+        };
+
+        function showPetDetails(pet) {
+            const modal = document.getElementById('pet-modal');
+            const content = document.getElementById('modal-content');
+            const details = petDetails[pet];
+            if (!details) return;
+
+            content.innerHTML = `
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-gradient-to-br ${details.color} rounded-full flex items-center justify-center">
+                            <i class="${details.icon} text-3xl text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">${details.title}</h2>
+                    </div>
+                    <button onclick="closePetModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="prose max-w-none">${details.content}</div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closePetModal() {
+            document.getElementById('pet-modal').classList.add('hidden');
+        }
+
+        function comparePets() {
+            const pet1 = document.getElementById('compare-pet1').value;
+            const pet2 = document.getElementById('compare-pet2').value;
+            if (!pet1 || !pet2) {
+                showToast('Please select both pets to compare!');
+                return;
+            }
+            const data1 = petComparisonData[pet1];
+            const data2 = petComparisonData[pet2];
+            const characteristics = ['lifespan', 'size', 'exercise', 'noise', 'social', 'cost', 'grooming', 'training', 'space'];
+            const labels = {
+                lifespan: '🕒 Lifespan',
+                size: '📏 Size',
+                exercise: '🏃 Exercise Needs',
+                noise: '🔊 Noise Level',
+                social: '👥 Social Needs',
+                cost: '💰 Monthly Cost',
+                grooming: '✂️ Grooming',
+                training: '🎓 Training Difficulty',
+                space: '🏠 Space Required'
+            };
+            document.getElementById('pet1-header').textContent = data1.name;
+            document.getElementById('pet2-header').textContent = data2.name;
+            document.getElementById('comparison-table').innerHTML = characteristics.map(char => `
+                <tr>
+                    <td class="p-4 font-medium text-gray-700">${labels[char]}</td>
+                    <td class="p-4 text-gray-600">${data1[char]}</td>
+                    <td class="p-4 text-gray-600">${data2[char]}</td>
+                </tr>
+            `).join('');
+            document.getElementById('comparison-results').classList.remove('hidden');
+            showToast(`Comparing ${data1.name} vs ${data2.name}!`);
+        }
+        
+    </script>
+</body>
+</html>
