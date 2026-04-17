@@ -18,12 +18,12 @@
             </a>
       
             <div class="hidden lg:flex items-center gap-1">
-              <a href="home.html" class="nav-tools-pill px-4 py-2 text-base font-semibold rounded-full inline-flex items-center gap-2">
+                <a href="home.html" class="nav-link px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900">
                 Home
               </a>
 
               <div class="group relative">
-                <button class="nav-link px-4 py-2 text-base font-medium text-gray-700 inline-flex items-center gap-2">
+                <button class="nav-tools-pill px-4 py-2 text-base font-semibold rounded-full inline-flex items-center gap-2 active">
                   Guides <i class="fas fa-chevron-down text-xs"></i>
                 </button>
                 <div class="dropdown-menu">
@@ -272,6 +272,20 @@
         <span id="toast-message"></span>
     </div>
 
+    <div id="search-panel" class="hidden absolute inset-x-0 top-full bg-white shadow-md p-4 z-30">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex gap-2 items-center">
+      <input id="search-query" type="search" placeholder="Search guides, care, tools..." class="w-full border border-gray-200 rounded-full px-4 py-3 focus:border-purple-500 focus:outline-none">
+      <button onclick="searchContent()" class="bg-purple-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
+        Search
+      </button>
+      <button onclick="toggleSearchPanel()" class="bg-gray-200 text-gray-700 px-5 py-3 rounded-full hover:bg-gray-300 transition">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
     <script>
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -283,6 +297,21 @@
             document.getElementById('toast-message').textContent = message;
             toast.classList.remove('translate-y-20', 'opacity-0');
             setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
+        }
+
+        function toggleSearchPanel() {
+            const panel = document.getElementById('search-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        function searchContent() {
+            const queryInput = document.getElementById('search-query') || document.getElementById('search-input');
+            const query = queryInput ? queryInput.value.trim() : '';
+            if (!query) {
+                showToast('Please enter a search term.');
+                return;
+            }
+            showToast(`Searching for "${query}"...`);
         }
 
         const petDetails = {
