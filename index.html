@@ -21,7 +21,7 @@
                 </a>
 
                 <div class="hidden lg:flex items-center gap-1">
-                    <a href="home.html" class="nav-tools-pill px-4 py-2 text-base font-semibold rounded-full inline-flex items-center gap-2">
+                    <a href="home.html" class="nav-tools-pill px-4 py-2 text-base font-semibold rounded-full inline-flex items-center gap-2 active">
                         Home
                     </a>
 
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="flex items-center gap-3">
-                    <button class="nav-search-btn hidden lg:inline-flex items-center justify-center w-11 h-11 rounded-full">
+                    <button onclick="toggleSearchPanel()" class="nav-search-btn hidden lg:inline-flex items-center justify-center w-11 h-11 rounded-full">
                         <i class="fas fa-search"></i>
                     </button>
                     <a href="tool.html" class="hidden lg:inline-flex items-center gap-2 bg-purple-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
@@ -85,12 +85,15 @@
             </div>
         </div>
 
-        <div id="search-panel" class="hidden absolute inset-x-0 top-full bg-white shadow-md p-4 z-40">
+        <div id="search-panel" class="hidden absolute inset-x-0 top-full bg-white shadow-md p-4 z-30">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="flex gap-2">
+                <div class="flex gap-2 items-center">
                     <input id="search-query" type="search" placeholder="Search guides, care, tools..." class="w-full border border-gray-200 rounded-full px-4 py-3 focus:border-purple-500 focus:outline-none">
                     <button onclick="searchContent()" class="bg-purple-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-purple-700 transition">
                         Search
+                    </button>
+                    <button onclick="toggleSearchPanel()" class="bg-gray-200 text-gray-700 px-5 py-3 rounded-full hover:bg-gray-300 transition">
+                        Close
                     </button>
                 </div>
             </div>
@@ -221,15 +224,15 @@
             panel.classList.toggle('hidden');
         }
 
-       function searchContent() {
-    const queryInput = document.getElementById('search-query') || document.getElementById('search-input');
-    const query = queryInput ? queryInput.value.trim() : '';
-    if (!query) {
-        showToast('Please enter a search term.');
-        return;
-    }
-    showToast(`Searching for "${query}"...`);
-}
+        function searchContent() {
+            const queryInput = document.getElementById('search-query') || document.getElementById('search-input');
+            const query = queryInput ? queryInput.value.trim() : '';
+            if (!query) {
+                showToast('Please enter a search term.');
+                return;
+            }
+            showToast(`Searching for "${query}"...`);
+        }
 
         function showToast(message) {
             const toast = document.getElementById('toast');
