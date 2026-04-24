@@ -135,10 +135,36 @@ body {
     z-index: 30;
 }
 
+#mobile-menu {
+    max-height: calc(100vh - 80px);
+}
+
+#mobile-menu.hidden {
+    display: none;
+}
+
 @media (max-width: 1024px) {
     .dropdown-menu {
         position: static;
+        display: none !important;
         box-shadow: none;
         border: none;
+        background: #f3f4f6;
+    }
+    
+    .group:hover .dropdown-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1440px) {
+    .nav-link {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-link {
+        font-size: 0.9rem;
     }
 }

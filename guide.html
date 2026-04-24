@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./favicon_io/site.webmanifest">
 </head>
 <body class="bg-gray-50">
     <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
@@ -82,6 +87,22 @@
           </div>
         </div>
       </nav>
+
+      <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-20 bg-white z-40 overflow-y-auto">
+        <div class="p-4 space-y-2">
+            <a href="home.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Home</a>
+            <a href="guide.html#pets" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Pet Guides</a>
+            <a href="guide.html#compare" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Compare Pets</a>
+            <a href="care.html#care" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Care Tips</a>
+            <a href="care.html#knowledge" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Knowledge</a>
+            <a href="tool.html#name-generator" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Name Generator</a>
+            <a href="tool.html#calculator" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Calculator</a>
+            <a href="tool.html#quiz" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Quiz</a>
+            <a href="blog.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Blog</a>
+            <a href="resource.html#shop" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Resources</a>
+            <a href="tool.html" class="block px-4 py-2 bg-purple-600 text-white rounded font-semibold">Explore Tools</a>
+        </div>
+    </div>
 
     <main class="pt-24">
         <section id="pets" class="py-20 bg-white">
