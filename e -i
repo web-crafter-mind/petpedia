@@ -1,0 +1,47 @@
+[33meec2859[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Replaced old files and added new folder
+[33m4ec9b2f[m Add files via upload
+[33m128ad54[m Delete home.html
+[33m7f8e354[m Delete resource.html
+[33m19707ce[m Delete style.css
+[33m70d0fe0[m Delete index.html
+[33m22ac62e[m Delete guide.html
+[33m175dbfa[m Delete care.html
+[33mc7f38e9[m Delete tool.html
+[33mdfc2849[m Delete blog.html
+[33m9307bbf[m Update print statement from 'Hello' to 'Goodbye'
+[33md709d40[m Reorganize and update CSS styles
+[33m122cb98[m Fix HTML encoding issues in resource.html
+[33m99b8fc5[m Update index.html
+[33m40f4345[m Update home.html
+[33ma7c4ffa[m Update guide.html
+[33meca4f33[m Update care.html
+[33mb8002f7[m Update blog.html
+[33mb12adf9[m Update blog.html
+[33m0ca8412[m Fix HTML encoding issues in home.html
+[33m2e2ee25[m Fix HTML encoding issues in home.html
+[33mf925c70[m Update index.html
+[33m4d1904c[m Fix HTML encoding issues in home.html
+[33mdebb53e[m Add files via upload
+[33m6255cb4[m Delete style.css
+[33m0052458[m Delete resource.html
+[33mb62bc54[m Delete index.html
+[33m141fe27[m Delete home.html
+[33mb7324b1[m Delete guide.html
+[33m63c5885[m Delete care.html
+[33m10b59c0[m Delete tool.html
+[33m98e7455[m Delete blog.html
+[33m4ea3511[m Revamp index.html with navigation and content updates
+[33me8224ec[m Add files via upload
+[33md256a7a[m Delete index.html
+[33m041e647[m Remove FAQ and Contact links from navigation
+[33ma6c2470[m Fix PDFs - remove Git LFS
+[33m9af08d0[m Fix missing newline at end of index.html
+[33m79f5a17[m Add PDF links to products and update download buttons
+[33mb752e8a[m Delete CNAME
+[33mc59b112[m Update CNAME
+[33m843ae9e[m Add MIT License to the project
+[33md6ef026[m Create CNAME
+[33m6024f35[m Delete CNAME
+[33m42a1038[m Create CNAME
+[33mbaee554[m Add PDFs using Git LFS
+[33m574f9bf[m Petpedia commit
